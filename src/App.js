@@ -1,13 +1,14 @@
 import "./App.css";
-import StickyFooter from "./components/common/Footer";
-import ResponsiveAppBar from "./components/common/Header";
-import Heropage from "./components/Home/heropage/Heropage";
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
+import Hero from "./components/Home/heropage/hero";
 
 function App() {
   return (
     <div className="App">
-      <ResponsiveAppBar />
-      <StickyFooter />
+      <Header />
+      <Hero />
+      <Footer />
     </div>
   );
 }

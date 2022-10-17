@@ -4,8 +4,17 @@ body > div,
 .App {
   height: 100%;
 }
-.App {
+/* .App {
   text-align: center;
+} */
+
+.contactUsButton {
+  border-radius: 0px !important;
+}
+
+.bottom {
+  text-align: "center";
+  padding: "1%";
 }
 
 .App-logo {

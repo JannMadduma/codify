@@ -1,109 +1,145 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { IconButton } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
-// import { Link } from "react-router-dom";
+import React from "react";
+import { makeStyles } from "@material-ui/core";
 
-function Copyright() {
+import {
+  Box,
+  Button,
+  Grid,
+  InputBase,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+
+const useStyles = makeStyles({
+  footerStyles: {
+    color: "white",
+    background: "#2160A0",
+  },
+  linkContainer: {
+    display: "flex",
+    textAlign: "top",
+    flexDirection: "row",
+  },
+  links: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "2%",
+    paddingTop: "1%",
+    flex: "25%",
+  },
+  linksLogo: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "2%",
+    paddingTop: "3%",
+    paddingBottom: "0px",
+    flex: "25%",
+  },
+  linksText: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "2%",
+    paddingTop: "1%",
+    flex: "25%",
+  },
+  aStyles: {
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+    lineHeight: "180%",
+  },
+  bottom: {
+    textAlign: "center",
+    padding: "1%",
+  },
+});
+
+export default function Footer() {
+  const classes = useStyles();
+
   return (
-    <Typography variant="body2" color="text.secondary">
-      {"Copyright © "}
-      {/* <Link color="inherit" href="/"> */}
-      CodifyPH
-      {/* </Link>{" "}
-      {new Date().getFullYear()}
-      {"."} */}
-    </Typography>
-  );
-}
+    <footer className={classes.footerStyles}>
+      <div>
+        <h3 className={classes.linksLogo}>LOGO</h3>
+      </div>
+      <div className={classes.linkContainer}>
+        <div className={classes.links}>
+          <a href="#" className={classes.aStyles}>
+            About Us
+          </a>
+          <a href="#" className={classes.aStyles}>
+            Our Story
+          </a>
+          <a href="#" className={classes.aStyles}>
+            Our Tech
+          </a>
+          <a href="#" className={classes.aStyles}>
+            Our Projects
+          </a>
+        </div>
+        <div className={classes.links}>
+          <a href="#" className={classes.aStyles}>
+            Admin Log in
+          </a>
+          <a href="#" className={classes.aStyles}>
+            FAQs
+          </a>
+          <a href="#" className={classes.aStyles}>
+            Contact Us
+          </a>
+        </div>
+        <div className={classes.linksText}>
+          <Typography>
+            For inquiries,{" "}
+            <span>
+              <a href="#" className={classes.aStyles}>
+                {" "}
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  send us an email
+                </Typography>
+              </a>
+            </span>{" "}
+            and we are more than happy to assist you
+          </Typography>
+        </div>
+        <div className={classes.links}>
+          <Typography>Get our latest update</Typography>
 
-export default function StickyFooter() {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Container
-        component="main"
-        sx={{ mt: 8, mb: 2, textAlign: "left", maxWidth: { xs: "100%" } }}
-        maxWidth="sm"
-      >
-        {/* <Typography variant="h2" component="h1" gutterBottom>
-          Estate Window
-        </Typography> */}
-        <Typography variant="h5" component="h2" gutterBottom>
-          {/* {'Pin a footer to the bottom of the viewport.'}
-          {'The footer will move as the main element of the page grows.'} */}
-          <IconButton
-            aria-label="Linkedin.com"
-            onClick={() => window.open("https://www.Linkedin.com")}
+          <Paper
+            sx={{
+              position: "relative",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundColor: "white",
+              textAlign: "center",
+            }}
           >
-            <LinkedInIcon fontSize="large" color="primary" />
-          </IconButton>
-          <IconButton
-            aria-label="Facebook.com"
-            onClick={() => window.open("https://www.Facebook.com")}
-          >
-            <FacebookIcon fontSize="large" color="primary" />
-          </IconButton>
-          <IconButton
-            aria-label="GitHub.com"
-            onClick={() => window.open("https://www.GitHub.com")}
-          >
-            <GitHubIcon fontSize="large" color="primary" />
-          </IconButton>
-          <IconButton
-            aria-label="Twitter.com"
-            onClick={() => window.open("https://www.Twitter.com")}
-          >
-            <TwitterIcon fontSize="large" color="primary" />
-          </IconButton>
-        </Typography>
-        <br />
-        {/* <Typography variant="body1">
-          <Link
-            to="/aboutus"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            About us |
-          </Link>
-          <Link
-            to="/developers"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            Developers
-          </Link>
-        </Typography> */}
-        <br />
-        <Typography>
-          {"Support: +63 907 8888 888"} <br />
-          {"Email: estatewindow@EW.ph"} <br />
-          {"Batchelor's Realty & Brokerage, Inc"}
-        </Typography>
-      </Container>
-
-      <Container
-        maxWidth="sm"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          paddingBottom: "50px",
-        }}
-      >
-        {/* <Typography variant="body1">
-            Capstone two
-          </Typography> */}
-        <img src="/img/houses.png" alt="Photo" />
-        <Copyright />
-      </Container>
-    </Box>
+            <Grid container>
+              <Grid item md={6}>
+                <Box>
+                  <InputBase sx={{ ml: 1 }} placeholder="Your email here" />
+                </Box>
+              </Grid>
+              <Grid item md={6}>
+                <Box>
+                  <Button size="small" variant="contained">
+                    Subscribe
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Paper>
+        </div>
+      </div>
+      <h5 className={classes.bottom}>Anywhere Fitness, a TT44 Company</h5>
+    </footer>
   );
 }
