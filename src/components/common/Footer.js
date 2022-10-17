@@ -1,10 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 import {
   Box,
   Button,
   Grid,
+  IconButton,
   InputBase,
   Paper,
   TextField,
@@ -79,6 +84,34 @@ export default function Footer() {
           <a href="#" className={classes.aStyles}>
             Our Projects
           </a>
+          <Box>
+            <Typography>
+              <IconButton
+                aria-label="Linkedin.com"
+                onClick={() => window.open("https://www.Linkedin.com")}
+              >
+                <LinkedInIcon />
+              </IconButton>
+              <IconButton
+                aria-label="Facebook.com"
+                onClick={() => window.open("https://www.Facebook.com")}
+              >
+                <FacebookIcon />
+              </IconButton>
+              <IconButton
+                aria-label="GitHub.com"
+                onClick={() => window.open("https://www.GitHub.com")}
+              >
+                <GitHubIcon />
+              </IconButton>
+              <IconButton
+                aria-label="Twitter.com"
+                onClick={() => window.open("https://www.Twitter.com")}
+              >
+                <TwitterIcon />
+              </IconButton>
+            </Typography>
+          </Box>
         </div>
         <div className={classes.links}>
           <a href="#" className={classes.aStyles}>
@@ -112,34 +145,23 @@ export default function Footer() {
         <div className={classes.links}>
           <Typography>Get our latest update</Typography>
 
-          <Paper
-            sx={{
-              position: "relative",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundColor: "white",
-              textAlign: "center",
-            }}
-          >
+          <Paper>
             <Grid container>
-              <Grid item md={6}>
+              <Grid item md={8}>
                 <Box>
                   <InputBase sx={{ ml: 1 }} placeholder="Your email here" />
                 </Box>
               </Grid>
-              <Grid item md={6}>
-                <Box>
-                  <Button size="small" variant="contained">
-                    Subscribe
-                  </Button>
-                </Box>
-              </Grid>
+              {/* <Grid item md={4}>
+                <Button size="small" variant="contained">
+                  Subscribe
+                </Button>
+              </Grid> */}
             </Grid>
           </Paper>
         </div>
       </div>
-      <h5 className={classes.bottom}>Anywhere Fitness, a TT44 Company</h5>
+      <h5 className={classes.bottom}>© CODIFYPH | COPYRIGHT 2022</h5>
     </footer>
   );
 }
