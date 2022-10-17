@@ -1,0 +1,1 @@
+const mainRoute = "http://localhost";
