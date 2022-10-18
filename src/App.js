@@ -1,4 +1,5 @@
 import "./App.css";
+import Feedbacks from "./components/common/Feedback";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import Portfolio from "./components/common/Portfolio";
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Pricing />
       <Portfolio />
+      <Feedbacks />
       <Footer />
     </div>
   );
