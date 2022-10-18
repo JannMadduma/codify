@@ -9,6 +9,8 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/joy": "^5.0.0-alpha.49",
     "@mui/material": "^5.10.9",
+    "react-swipeable-views": "latest",
+    "react-swipeable-views-utils": "latest",
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/system": "^5.10.9",
     "@testing-library/jest-dom": "^5.16.5",
