@@ -52,15 +52,6 @@ export default function Framework() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Text Here</Button>
-              <Button variant="outlined">Text Here</Button>
-            </Stack>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">

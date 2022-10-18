@@ -1,14 +1,13 @@
 import "./App.css";
-import Footer from "./components/common/Footer";
-import Header from "./components/common/Header";
-import Framework from "./components/Home/heropage/Framework";
+import { BrowserRouter } from "react-router-dom";
+import ComponentRoute from "./ComponentRoute";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Framework />
-      <Footer />
+    <div className="app">
+      <BrowserRouter>
+        <ComponentRoute />
+      </BrowserRouter>
     </div>
   );
 }
