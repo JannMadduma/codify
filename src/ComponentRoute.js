@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./components/home/Home";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import AboutUs from "./components/Home/about/AboutUs";
 
 // https://www.robinwieruch.de/react-router-private-routes/
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
@@ -19,6 +20,7 @@ const ComponentRoute = () => {
     <Routes>
       <Route index element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/aboutus" element={<AboutUs />} />
       {/* <Route
         element={<ProtectedRoute isAllowed={loggedIn?.role === "admin"} />}
       >
