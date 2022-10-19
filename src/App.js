@@ -1,11 +1,12 @@
 import "./App.css";
-import Home from "./components/Home/Home";
+import{ BrowserRouter} from "react-router-dom";
+import Componentroute from "./ComponentRoute";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Componentroute />
+    </BrowserRouter>
   );
 }
 
