@@ -35,7 +35,7 @@ const rows = [
   createData(3, "Russel Moon", "russel@gmail.com", "Active"),
 ];
 
-function SimpleTable(props) {
+function Freelancers(props) {
   const { classes } = props;
 
   return (
@@ -78,8 +78,8 @@ function SimpleTable(props) {
   );
 }
 
-SimpleTable.propTypes = {
+Freelancers.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleTable);
+export default withStyles(styles)(Freelancers);

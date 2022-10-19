@@ -1,17 +1,18 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
-import SignInButton from "./components/admin/loginpage/LoginButton";
-import SignIn from "./components/admin/adminpage/AdminPage";
+import SignInButton from "./components/admin/adminpage/LoginButton";
+import Freelancers from "./components/admin/adminpage/sidebars/Freelancers";
 
-function ComponentRoute() {
+function Componentroute() {
   return (
     <Routes>
       <Route index element={<Home />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/admin" element={<SignIn />} />
+      <Route path="/admin" element={<SignInButton />} />
+      <Route path="/manageadmin" element={<Freelancers />} />
     </Routes>
   );
 }
 
-export default ComponentRoute;
+export default Componentroute;
