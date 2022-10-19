@@ -8,6 +8,9 @@ import Footer from "../common/Footer";
 import Feedbacks from "../common/Feedbacks";
 import CallToActions from "./heropage/CallToAction";
 import PricingService from "./pricingservices/PricingService";
+import AboutUs from "./about/AboutUs";
+import Goals from "./about/goalsObj";
+import Missionvision from "./about/missionvision";
 
 const Home = ({}) => {
   return (
@@ -18,6 +21,10 @@ const Home = ({}) => {
       <Technology />
       <Portfolio />
       <PricingService />
+      <AboutUs />
+      <Framework />
+      <Goals />
+      <Missionvision />
       <Feedbacks />
       <CallToActions />
       <Footer />
