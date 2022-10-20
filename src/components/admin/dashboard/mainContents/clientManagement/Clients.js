@@ -63,7 +63,7 @@ export default function Clients() {
     reader.readAsDataURL(file);
 
     reader.onloadend = function (e) {
-      setClientDetails({ ...clientDetails, validId: [reader.result] });
+      setClientDetails({ ...clientDetails, validId: reader.result });
     };
   };
 
@@ -95,7 +95,7 @@ export default function Clients() {
       if (clientDetails.idNo) {
         const editedClientDetails = {
           ...clientDetails,
-          validId: clientDetails.validId[0],
+          validId: clientDetails.validId,
         };
 
         delete editedClientDetails.created_at;
@@ -348,9 +348,9 @@ export default function Clients() {
             />
           </Button>
 
-          {!!clientDetails?.validId?.length && (
+          {!!clientDetails?.validId && (
             <img
-              src={clientDetails.validId[0]}
+              src={clientDetails.validId}
               style={{ width: "100%", marginTop: 8 }}
             />
           )}
