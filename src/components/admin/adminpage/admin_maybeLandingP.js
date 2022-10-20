@@ -21,6 +21,15 @@ class Client extends Component {
         }
     }
 
+    deleteClient = async (e, id) => {
+        const thisClickedFund = e.currentTarget;
+        thisClickedFund.innerText = "Deleting";
+        const res = await axios.delete(`http://127.0.0.1:8000/api/delete-client/${id}`);
+        if(res.data.status === 200){
+            thisClickedFund.closest("tr").remove();
+            console.log(res.data.message);
+        }
+    }
 
     render(){
 
@@ -43,7 +52,7 @@ class Client extends Component {
                             <Link to={`edit-client/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                         </td>
                         <td>
-                            <button type="button" className="btn btn-danger btn-sm">Delete</button>
+                            <button type="button" onClick={(e) => this.deleteClient(e, item.id)} className="btn btn-danger btn-sm">Delete</button>
                         </td>
                     </tr>
                 )
