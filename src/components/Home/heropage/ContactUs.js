@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function CallToActions() {
+export default function ContactUs() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

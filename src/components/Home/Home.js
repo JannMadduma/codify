@@ -6,11 +6,11 @@ import Technology from "./heropage/Technology";
 import Portfolio from "../common/Portfolio";
 import Footer from "../common/Footer";
 import Feedbacks from "../common/Feedbacks";
-import CallToActions from "./heropage/CallToAction";
 import PricingService from "./pricingservices/PricingService";
 import AboutUs from "./about/AboutUs";
 import Goals from "./about/goalsObj";
 import Missionvision from "./about/missionvision";
+import ContactUs from "./heropage/ContactUs";
 
 const Home = ({}) => {
   return (
@@ -26,7 +26,7 @@ const Home = ({}) => {
       <Goals />
       <Missionvision />
       <Feedbacks />
-      <CallToActions />
+      <ContactUs />
       <Footer />
     </div>
   );

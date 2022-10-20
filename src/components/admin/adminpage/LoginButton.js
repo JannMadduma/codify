@@ -78,9 +78,6 @@ export default function SignInButton() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("called handleSignin");
-    console.log(user);
     setError("");
     if (!user.email || !user.password) {
       setError("Please fill up necessary fields");
@@ -98,7 +95,6 @@ export default function SignInButton() {
       //   .catch((err) => {
       //     setError("Something went wrong. Please try later");
       //   });
-      console.log("ok");
       navigate("/manageadmin");
     }
   };

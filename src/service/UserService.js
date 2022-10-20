@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlUser = "";
+const urlUser = "http://127.0.0.1:8000/api/clients";
 
 export const loginUser = async (email, password) => {
   return await axios.get(`${urlUser}?email=${email}&password=${password}`);
