@@ -6,108 +6,55 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Alert,
+  Avatar,
+  Button,
+  ButtonGroup,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import {
+  addClients,
+  deleteClients,
+  editClients,
+  getAllClients,
+} from "../../../../../service/ClientService";
+import {
+  addClientAction,
+  deleteClientAction,
+  editClientAction,
+  setClients,
+} from "../../../../../actions/ClientActions";
 
 const mdTheme = createTheme();
 
 export default function Clients() {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.clients);
-  const [open, setOpen] = React.useState(true);
-  const [client, setClient] = React.useState({});
-  const [openView, setOpenView] = React.useState(false);
+  const [clientDetails, setClientDetails] = React.useState({});
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   const handleInputChange = (e) => {
-    setClient({ ...client, [e.target.name]: e.target.value });
-  };
-
-  const handleClickOpen = (i) => {
-    setError(false);
-    setClient(i);
-    setEditOpen(true);
-  };
-
-  const handleClose = () => {
-    setEditOpen(false);
-  };
-
-  const handleOpenView = (i) => {
-    setClient(i);
-    setOpenView(true);
-  };
-
-  const handleCloseView = () => {
-    setOpenView(false);
-  };
-
-  const handleEdit = () => {
-    setError(false);
-
-    if (
-      !client.idNo ||
-      !client.name ||
-      !client.concerns ||
-      !client.contactNo ||
-      !client.email ||
-      !client.availableTime ||
-      !client.validId ||
-      !client.payment
-    ) {
-      setError(true);
-    } else {
-      if (client.idNo) {
-        // "deleteUser" is from service,UserService
-        editClients(client.idNo, { ...client, img: [...client.img] }).then(
-          (res) => {
-            // "deleteUserAction" is from actions, UsersAction
-            console.log(res.data.img);
-            dispatch(editClientsAction(res.data));
-          }
-        );
-        handleClose();
-      } else {
-        const clientToAdd = {
-          ...client,
-          img: client?.img?.length ? client?.img : [],
-        };
-
-        addClient(clientToAdd).then((res) => {
-          dispatch(addClientAction(res.data));
-        });
-        handleClose();
-      }
-    }
-  };
-
-  React.useEffect(() => {
-    getAllClients().then((res) => {
-      dispatch(setClients(res.data));
-    });
-  }, []);
-
-  // to delete Client
-  const handleClientDelete = () => {
-    // "deleteClients" is from service, ClientsService
-    deleteClient(client.id).then((res) => {
-      // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(deleteClientAction({ id: client.id }));
-    });
-    handleCloseConfirmDelete();
-  };
-
-  // to avoid deleting right away, added dialog for confirm
-  const handleOpenConfirmDelete = (i) => {
-    console.log("Confirm detete?");
-    setClient(i);
-    setOpenConfirm(true);
-  };
-
-  const handleCloseConfirmDelete = () => {
-    setOpenConfirm(false);
+    setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
   };
 
   const handleImgChange = (e) => {
@@ -116,8 +63,90 @@ export default function Clients() {
     reader.readAsDataURL(file);
 
     reader.onloadend = function (e) {
-      setClient({ ...client, img: [reader.result] });
+      setClientDetails({ ...clientDetails, validId: [reader.result] });
     };
+  };
+
+  const handleClickOpen = (i) => {
+    console.log(i);
+    setError(false);
+    setClientDetails(i);
+    setEditOpen(true);
+  };
+
+  const handleClose = () => {
+    setEditOpen(false);
+  };
+
+  const handleEdit = () => {
+    setError(false);
+
+    if (
+      !clientDetails.name ||
+      !clientDetails.concerns ||
+      !clientDetails.contactNo ||
+      !clientDetails.email ||
+      !clientDetails.availableTime ||
+      !clientDetails.validId ||
+      !clientDetails.status
+    ) {
+      setError(true);
+    } else {
+      if (clientDetails.idNo) {
+        const editedClientDetails = {
+          ...clientDetails,
+          validId: clientDetails.validId[0],
+        };
+
+        delete editedClientDetails.created_at;
+        delete editedClientDetails.updated_at;
+
+        editClients(clientDetails.idNo, editedClientDetails).then((res) => {
+          dispatch(
+            editClientAction({ ...res.data.client, idNo: clientDetails.idNo })
+          );
+        });
+        handleClose();
+      } else {
+        const clientToAdd = {
+          ...clientDetails,
+          validId: clientDetails?.validId?.length
+            ? clientDetails?.validId[0]
+            : [],
+        };
+
+        addClients(clientToAdd).then((res) => {
+          dispatch(addClientAction(res.data.client));
+        });
+        handleClose();
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      dispatch(setClients(res.data.clients));
+    });
+  }, []);
+
+  // to delete Client
+  const handleClientDelete = () => {
+    // "deleteClients" is from service, ClientsService
+    deleteClients(clientDetails.idNo).then(() => {
+      // "deleteClientsAction" is from actions, ClientsAction
+      dispatch(deleteClientAction({ idNo: clientDetails.idNo }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  // to avoid deleting right away, added dialog for confirm
+  const handleOpenConfirmDelete = (i) => {
+    setClientDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setOpenConfirm(false);
   };
 
   return (
@@ -146,19 +175,34 @@ export default function Clients() {
                   <Table size="small">
                     <TableHead>
                       <TableRow>
+                        <TableCell>TOTAL CLIENTS = {clients.length}</TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell align="center">
+                          <Button onClick={() => handleClickOpen({})}>
+                            ADD CLIENTS
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
                         <TableCell>ID No.</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Concerns</TableCell>
                         <TableCell>Contact No.</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Available Time</TableCell>
+                        <TableCell>Status</TableCell>
                         <TableCell>Valid ID</TableCell>
-                        <TableCell>Payment</TableCell>
-                        <TableCell align="right">Actions</TableCell>
+                        <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {clients.map((row) => (
+                      {clients?.map((row) => (
                         <TableRow key={row?.idNo}>
                           <TableCell>{row?.idNo}</TableCell>
                           <TableCell>{row?.name}</TableCell>
@@ -166,9 +210,11 @@ export default function Clients() {
                           <TableCell>{row?.contactNo}</TableCell>
                           <TableCell>{row?.email}</TableCell>
                           <TableCell>{row?.availableTime}</TableCell>
-                          <TableCell>{row?.validId}</TableCell>
-                          <TableCell>{row?.payment}</TableCell>
-                          <TableCell align="right">
+                          <TableCell>{row?.status}</TableCell>
+                          <TableCell>
+                            <Avatar variant="rounded" src={row?.validId} />
+                          </TableCell>
+                          <TableCell align="center">
                             <div
                               sx={{
                                 display: "flex",
@@ -184,27 +230,29 @@ export default function Clients() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button
-                                  onClick={() => {
-                                    handleOpenView(row);
-                                  }}
-                                >
-                                  View
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleClickOpen(row);
-                                  }}
-                                >
-                                  Edit
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleOpenConfirmDelete(row);
-                                  }}
-                                >
-                                  Delete
-                                </Button>
+                                <Tooltip title="Delete">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleClickOpen(row);
+                                    }}
+                                  >
+                                    <ModeEditOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
+                                <Divider
+                                  orientation="vertical"
+                                  variant="middle"
+                                  flexItem
+                                />
+                                <Tooltip title="Delete">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleOpenConfirmDelete(row);
+                                    }}
+                                  >
+                                    <DeleteOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -218,7 +266,6 @@ export default function Clients() {
           </Container>
         </Box>
       </Box>
-      <ViewModal open={openView} setOpen={setOpenView} client={client} />
       <Dialog
         maxWidth="sm"
         fullWidth
@@ -227,14 +274,14 @@ export default function Clients() {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {client.id ? "Edit" : "Add"} Client
+          {clientDetails.idNo ? "Edit" : "Add"} Client
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
           <TextField
             autoFocus
             margin="dense"
-            value={client?.name}
+            value={clientDetails?.name}
             type="text"
             fullWidth
             variant="outlined"
@@ -244,7 +291,7 @@ export default function Clients() {
           />
           <TextField
             margin="dense"
-            value={client?.concerns}
+            value={clientDetails?.concerns}
             type="text"
             fullWidth
             variant="outlined"
@@ -254,17 +301,17 @@ export default function Clients() {
           />
           <TextField
             margin="dense"
-            value={client?.contactNo}
+            value={clientDetails?.contactNo}
             type="text"
             fullWidth
             variant="outlined"
-            name="conctactNo"
-            label="ContactNO"
+            name="contactNo"
+            label="Contact No"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={client?.email}
+            value={clientDetails?.email}
             type="text"
             fullWidth
             variant="outlined"
@@ -274,32 +321,21 @@ export default function Clients() {
           />
           <TextField
             margin="dense"
-            value={client?.availableTime}
-            type="text"
+            value={clientDetails?.availableTime}
+            type="datetime-local"
             fullWidth
             variant="outlined"
             name="availableTime"
-            label="Available Time"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={client?.validId}
+            value={clientDetails?.status}
             type="text"
             fullWidth
             variant="outlined"
-            name="validId"
-            label="Valid Id"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={client?.payment}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="payment"
-            label="Payment"
+            name="status"
+            label="Status"
             onChange={handleInputChange}
           />
           <Button component="label" variant="outlined" sx={{ mt: 1 }}>
@@ -312,11 +348,13 @@ export default function Clients() {
             />
           </Button>
 
-          {!!client?.img?.length && (
-            <img src={client.img[0]} style={{ width: "100%", marginTop: 8 }} />
+          {!!clientDetails?.validId?.length && (
+            <img
+              src={clientDetails.validId[0]}
+              style={{ width: "100%", marginTop: 8 }}
+            />
           )}
         </DialogContent>
-
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
             Cancel
@@ -335,7 +373,8 @@ export default function Clients() {
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{client?.name}</strong>?
+            Are you sure you want to delete{" "}
+            <strong>{clientDetails?.name}</strong>?
           </Typography>
         </DialogContent>
 
