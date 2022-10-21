@@ -98,6 +98,7 @@ export default function Clients() {
           validId: clientDetails.validId,
         };
 
+        delete editedClientDetails.id;
         delete editedClientDetails.created_at;
         delete editedClientDetails.updated_at;
 
@@ -110,9 +111,7 @@ export default function Clients() {
       } else {
         const clientToAdd = {
           ...clientDetails,
-          validId: clientDetails?.validId?.length
-            ? clientDetails?.validId[0]
-            : [],
+          validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
         };
 
         addClients(clientToAdd).then((res) => {
