@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const projectURL = "http://127.0.0.1:8000/api/clients";
-const projectAddURL = "http://127.0.0.1:8000/api/add-client";
-const projectDeleteURL = "http://127.0.0.1:8000/api/delete-client";
-const projectEditURL = "http://127.0.0.1:8000/api/update-client";
+const projectURL = "http://127.0.0.1:8000/api/project";
+const projectAddURL = "http://127.0.0.1:8000/api/add-project";
+const projectDeleteURL = "http://127.0.0.1:8000/api/delete-project";
+const projectEditURL = "http://127.0.0.1:8000/api/update-project";
 
 export const getAllProjects = async (id) => {
   id = id || "";

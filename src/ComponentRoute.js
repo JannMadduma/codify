@@ -38,8 +38,8 @@ const ComponentRoute = () => {
         <Route path="/pendingclients" element={<PendingClients />} /> */}
       <Route path="/admin" element={<SignInButton />} />
       <Route path="/clients" element={<Clients />} />
-      {/* <Route path="/pendingprojects" element={<PendingProjects />} />
-      <Route path="/projects" element={<Projects />} /> */}
+      {/* <Route path="/pendingprojects" element={<PendingProjects />} /> */}
+      <Route path="/projects" element={<Projects />} />
     </Routes>
   );
 };

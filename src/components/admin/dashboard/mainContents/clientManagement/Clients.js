@@ -20,6 +20,7 @@ import {
   Divider,
   Drawer,
   IconButton,
+  Input,
   List,
   Table,
   TableBody,
@@ -196,7 +197,9 @@ export default function Clients() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell></TableCell>
+                        <TableCell>
+                          <Input>search</Input>
+                        </TableCell>
                         <TableCell align="center">
                           <Button onClick={() => handleClickOpen({})}>
                             ADD CLIENTS

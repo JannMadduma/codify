@@ -8,11 +8,12 @@ export default function ClientsReducer(state = clientsState, action) {
     // SET
     case actionTypes.SET_CLIENTSS:
       return action.clients;
+
     // ADD
     case actionTypes.ADD_CLIENTS:
       return [
-        { ...action.clientDetails, idNo: action.clientDetails.id },
         ...state,
+        { ...action.clientDetails, idNo: action.clientDetails.id },
       ];
     // EDIT
     case actionTypes.EDIT_CLIENTS:

@@ -6,25 +6,22 @@ let index;
 export default function ProjectsReducer(state = projectsState, action) {
   switch (action.type) {
     case actionTypes.SET_PROJECTS:
-      return action.clients;
+      return action.projects;
     case actionTypes.ADD_PROJECT:
       return [
-        { ...action.clientDetails, idNo: action.clientDetails.id },
+        { ...action.projectDetails, idNo: action.projectDetails.id },
         ...state,
       ];
-    case actionTypes.EDIT_CLIENTS:
-      console.log("bulot");
-      console.log(state);
-      console.log(action);
-      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+    case actionTypes.EDIT_PROJECT:
+      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
 
       return [
         ...state.slice(0, index), // everything before current item
-        action.clientDetails,
+        action.projectDetails,
         ...state.slice(index + 1), // everything after current item
       ];
-    case actionTypes.DELETE_CLIENTS:
-      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+    case actionTypes.DELETE_PROJECT:
+      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
 
       return [
         ...state.slice(0, index), // everything before current item

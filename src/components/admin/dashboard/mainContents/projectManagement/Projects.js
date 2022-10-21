@@ -3,111 +3,61 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Alert,
+  Avatar,
+  Button,
+  ButtonGroup,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import {
+  addProjects,
+  deleteProjects,
+  editProjects,
+  getAllProjects,
+} from "../../../../../service/ProjectService";
+import {
+  addProjectAction,
+  deleteProjectAction,
+  editProjectAction,
+  setProjects,
+} from "../../../../../actions/ProjectActions";
+import { SidebarContents } from "../../sidebarContents/SidebarContents";
+import AdminHeader from "../../../../common/AdminHeader";
 
 const mdTheme = createTheme();
 
 export default function Projects() {
   const dispatch = useDispatch();
-  const Projects = useSelector((state) => state.Projects);
-  const [open, setOpen] = React.useState(true);
-  const [project, setProject] = React.useState({});
-  const [openView, setOpenView] = React.useState(false);
+  const projects = useSelector((state) => state.projects);
+  const [projectDetails, setProjectDetails] = React.useState({});
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   const handleInputChange = (e) => {
-    setProject({ ...project, [e.target.name]: e.target.value });
-  };
-
-  const handleClickOpen = (i) => {
-    setError(false);
-    setProject(i);
-    setEditOpen(true);
-  };
-
-  const handleClose = () => {
-    setEditOpen(false);
-  };
-
-  const handleOpenView = (i) => {
-    setProject(i);
-    setOpenView(true);
-  };
-
-  const handleCloseView = () => {
-    setOpenView(false);
-  };
-
-  const handleEdit = () => {
-    setError(false);
-
-    if (
-      !project.idNo ||
-      !project.name ||
-      !project.concerns ||
-      !project.contactNo ||
-      !project.email ||
-      !project.availableTime ||
-      !project.validId ||
-      !project.payment
-    ) {
-      setError(true);
-    } else {
-      if (project.idNo) {
-        // "deleteUser" is from service,UserService
-        editClients(project.idNo, { ...project, img: [...project.img] }).then(
-          (res) => {
-            // "deleteUserAction" is from actions, UsersAction
-            console.log(res.data.img);
-            dispatch(editClientsAction(res.data));
-          }
-        );
-        handleClose();
-      } else {
-        const projectToAdd = {
-          ...project,
-          img: project?.img?.length ? project?.img : [],
-        };
-
-        addClient(projectToAdd).then((res) => {
-          dispatch(addClientAction(res.data));
-        });
-        handleClose();
-      }
-    }
-  };
-
-  React.useEffect(() => {
-    getAllClients().then((res) => {
-      dispatch(setClients(res.data));
-    });
-  }, []);
-
-  // to delete Client
-  const handleProjectDelete = () => {
-    // "deleteProjects" is from service, ClientsService
-    deleteProject(project.id).then((res) => {
-      // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(deleteProjectClientAction({ id: project.id }));
-    });
-    handleCloseConfirmDelete();
-  };
-
-  // to avoid deleting right away, added dialog for confirm
-  const handleOpenConfirmDelete = (i) => {
-    console.log("Confirm detete?");
-    setProject(i);
-    setOpenConfirm(true);
-  };
-
-  const handleCloseConfirmDelete = () => {
-    setOpenConfirm(false);
+    setProjectDetails({ ...projectDetails, [e.target.name]: e.target.value });
   };
 
   const handleImgChange = (e) => {
@@ -116,17 +66,109 @@ export default function Projects() {
     reader.readAsDataURL(file);
 
     reader.onloadend = function (e) {
-      setProject({ ...project, img: [reader.result] });
+      setProjectDetails({ ...projectDetails, GanteChartPic: reader.result });
     };
+  };
+
+  const handleClickOpen = (i) => {
+    console.log(i);
+    setError(false);
+    setProjectDetails(i);
+    setEditOpen(true);
+  };
+
+  const handleClose = () => {
+    setEditOpen(false);
+  };
+
+  const handleEdit = () => {
+    setError(false);
+    console.log(projectDetails);
+    if (
+      !projectDetails.Projectname ||
+      !projectDetails.ClientName ||
+      !projectDetails.GanteChartPic ||
+      !projectDetails.status
+    ) {
+      setError(true);
+    } else {
+      if (projectDetails.idNo) {
+        const editedProjectDetails = {
+          ...projectDetails,
+          GanteChartPic: projectDetails.GanteChartPic,
+        };
+
+        delete editedProjectDetails.id;
+        delete editedProjectDetails.created_at;
+        delete editedProjectDetails.updated_at;
+
+        editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
+          dispatch(
+            editProjectAction({
+              ...res.data.project,
+              idNo: projectDetails.idNo,
+            })
+          );
+        });
+        handleClose();
+      } else {
+        const projectToAdd = {
+          ...projectDetails,
+          GanteChartPic: projectDetails?.GanteChartPic?.length
+            ? projectDetails?.GanteChartPic
+            : [],
+        };
+
+        addProjects(projectToAdd).then((res) => {
+          dispatch(addProjectAction(res.data.project));
+        });
+        handleClose();
+      }
+    }
+  };
+  React.useEffect(() => {
+    getAllProjects().then((res) => {
+      dispatch(setProjects(res.data.projects));
+    });
+  }, []);
+
+  const handleProjectDelete = () => {
+    deleteProjects(projectDetails.idNo).then(() => {
+      dispatch(deleteProjectAction({ idNo: projectDetails.idNo }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  // to avoid deleting right away, added dialog for confirm
+  const handleOpenConfirmDelete = (i) => {
+    setProjectDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setOpenConfirm(false);
   };
 
   return (
     <ThemeProvider theme={mdTheme}>
+      <AdminHeader />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+        {/* sidebar design */}
+        <Box variant="permanent">
+          <Toolbar
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              margin: "5%",
+              px: [1],
+            }}
+          ></Toolbar>
+          <List component="nav">{SidebarContents}</List>
+        </Box>
         {/* main contents design */}
         <Box
-          component="main"
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === "light"
@@ -137,38 +179,50 @@ export default function Projects() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
           {/* contents */}
-          <Container maxWidth="lg" sx={{ mb: 4 }}>
+          <Box maxWidth="100%" sx={{ mb: 4, margin: "5% 2%" }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell>ID No.</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Concerns</TableCell>
-                        <TableCell>Contact No.</TableCell>
-                        <TableCell>Email</TableCell>
-                        <TableCell>Available Time</TableCell>
-                        <TableCell>Valid ID</TableCell>
-                        <TableCell>Payment</TableCell>
-                        <TableCell align="right">Actions</TableCell>
+                        <TableCell>
+                          TOTAL PROJECTS = {projects.length}
+                        </TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell align="center">
+                          <Button onClick={() => handleClickOpen({})}>
+                            ADD PROJECT
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Project Id</TableCell>
+                        <TableCell>Project Name</TableCell>
+                        <TableCell>Client Name</TableCell>
+                        <TableCell>Status</TableCell>
+                        <TableCell>Gante Chart</TableCell>
+                        <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {Projects.map((row) => (
+                      {projects?.map((row) => (
                         <TableRow key={row?.idNo}>
                           <TableCell>{row?.idNo}</TableCell>
-                          <TableCell>{row?.name}</TableCell>
-                          <TableCell>{row?.concerns}</TableCell>
-                          <TableCell>{row?.contactNo}</TableCell>
-                          <TableCell>{row?.email}</TableCell>
-                          <TableCell>{row?.availableTime}</TableCell>
-                          <TableCell>{row?.validId}</TableCell>
-                          <TableCell>{row?.payment}</TableCell>
-                          <TableCell align="right">
+                          <TableCell>{row?.Projectname}</TableCell>
+                          <TableCell>{row?.ClientName}</TableCell>
+                          <TableCell>{row?.Status}</TableCell>
+                          <TableCell>
+                            <Avatar
+                              variant="rounded"
+                              src={row?.GanteChartPic}
+                            />
+                          </TableCell>
+                          <TableCell align="center">
                             <div
                               sx={{
                                 display: "flex",
@@ -184,27 +238,29 @@ export default function Projects() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button
-                                  onClick={() => {
-                                    handleOpenView(row);
-                                  }}
-                                >
-                                  View
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleClickOpen(row);
-                                  }}
-                                >
-                                  Edit
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleOpenConfirmDelete(row);
-                                  }}
-                                >
-                                  Delete
-                                </Button>
+                                <Tooltip title="Edit">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleClickOpen(row);
+                                    }}
+                                  >
+                                    <ModeEditOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
+                                <Divider
+                                  orientation="vertical"
+                                  variant="middle"
+                                  flexItem
+                                />
+                                <Tooltip title="Delete">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleOpenConfirmDelete(row);
+                                    }}
+                                  >
+                                    <DeleteOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -215,10 +271,9 @@ export default function Projects() {
                 </Paper>
               </Grid>
             </Grid>
-          </Container>
+          </Box>
         </Box>
       </Box>
-      <ViewModal open={openView} setOpen={setOpenView} project={project} />
       <Dialog
         maxWidth="sm"
         fullWidth
@@ -227,83 +282,43 @@ export default function Projects() {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {project.id ? "Edit" : "Add"} Client
+          {projectDetails.idNo ? "Edit" : "Add"} Project
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
           <TextField
             autoFocus
             margin="dense"
-            value={project?.name}
+            value={projectDetails?.Projectname}
             type="text"
             fullWidth
             variant="outlined"
-            name="name"
-            label="Name"
+            name="Projectname"
+            label="Project Name"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={project?.concerns}
+            value={projectDetails?.ClientName}
             type="text"
             fullWidth
             variant="outlined"
-            name="concerns"
-            label="Concerns"
+            name="ClientName"
+            label="Client Name"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={project?.contactNo}
+            value={projectDetails?.status}
             type="text"
             fullWidth
             variant="outlined"
-            name="conctactNo"
-            label="ContactNO"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={project?.email}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="email"
-            label="Email"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={project?.availableTime}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="availableTime"
-            label="Available Time"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={project?.validId}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="validId"
-            label="Valid Id"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={project?.payment}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="payment"
-            label="Payment"
+            name="status"
+            label="Status"
             onChange={handleInputChange}
           />
           <Button component="label" variant="outlined" sx={{ mt: 1 }}>
-            Upload ID
+            Upload Gante Chart
             <input
               type="file"
               accept="image/*"
@@ -312,11 +327,13 @@ export default function Projects() {
             />
           </Button>
 
-          {!!project?.img?.length && (
-            <img src={project.img[0]} style={{ width: "100%", marginTop: 8 }} />
+          {!!projectDetails?.GanteChartPic && (
+            <img
+              src={projectDetails.GanteChartPic}
+              style={{ width: "100%", marginTop: 8 }}
+            />
           )}
         </DialogContent>
-
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
             Cancel
@@ -335,7 +352,8 @@ export default function Projects() {
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{project?.name}</strong>?
+            Are you sure you want to delete{" "}
+            <strong>{projectDetails?.name}</strong>?
           </Typography>
         </DialogContent>
 

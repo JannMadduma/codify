@@ -9,14 +9,14 @@ export function setProjects(projects) {
   return { type: actionTypes.SET_PROJECTS, projects };
 }
 
-export function addProjectAction(projectsDetails) {
-  return { type: actionTypes.ADD_PROJECT, projectsDetails };
+export function addProjectAction(projectDetails) {
+  return { type: actionTypes.ADD_PROJECT, projectDetails };
 }
 
-export function editProjectAction(projectsDetails) {
-  return { type: actionTypes.EDIT_PROJECT, projectsDetails };
+export function editProjectAction(projectDetails) {
+  return { type: actionTypes.EDIT_PROJECT, projectDetails };
 }
 
-export function deleteProjectAction(projectsDetails) {
-  return { type: actionTypes.DELETE_PROJECT, projectsDetails };
+export function deleteProjectAction(projectDetails) {
+  return { type: actionTypes.DELETE_PROJECT, projectDetails };
 }
