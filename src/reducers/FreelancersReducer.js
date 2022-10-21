@@ -1,8 +1,8 @@
-import { actionTypes } from "../actions/LoggedinActions";
+import { actionTypes } from "../actions/FreelancersAction";
 
 const loggedIn = {};
 
-export default function LoggedInReducer(state = loggedIn, action) {
+export default function FreelancersReducer(state = loggedIn, action) {
   switch (action.type) {
     case actionTypes.SET_LOGGEDIN:
       return action.loggedIn;

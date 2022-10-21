@@ -10,6 +10,7 @@ import PendingClients from "./components/admin/dashboard/mainContents/clientMana
 import PendingProjects from "./components/admin/dashboard/mainContents/projectManagement/PendingProjects";
 import Projects from "./components/admin/dashboard/mainContents/projectManagement/Projects";
 import Clients from "./components/admin/dashboard/mainContents/clientManagement/Clients";
+import Freelancers from "./components/admin/dashboard/mainContents/others/Freelancers";
 
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
   if (!isAllowed) {
@@ -40,6 +41,7 @@ const ComponentRoute = () => {
       <Route path="/clients" element={<Clients />} />
       {/* <Route path="/pendingprojects" element={<PendingProjects />} /> */}
       <Route path="/projects" element={<Projects />} />
+      <Route path="/freelancers" element={<Freelancers />} />
     </Routes>
   );
 };

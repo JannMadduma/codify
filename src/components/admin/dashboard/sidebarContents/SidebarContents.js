@@ -32,8 +32,7 @@ export const SidebarContents = (
       <ListItemText primary="Subscribed" />
     </ListItemButton>
 
-    <ListItemButton>
-      {/* component={Link} to={"/freelancers"} */}
+    <ListItemButton component={Link} to={"/freelancers"}>
       <ListItemIcon>
         <Diversity3Icon />
       </ListItemIcon>
