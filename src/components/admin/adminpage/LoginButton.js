@@ -19,8 +19,8 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setLoggedIn } from "../../../actions/LoggedinActions";
-import { loginUser } from "../../../service/UserService";
+import { setFreelancers } from "../../../actions/FreelancersAction";
+import { loginUser } from "../../../service/FreelancersService";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
@@ -88,7 +88,7 @@ export default function SignInButton() {
           if (!res?.data?.length) {
             setError("Incorrect email or password");
           } else {
-            dispatch(setLoggedIn(res.data[0]));
+            dispatch(setFreelancers(res.data[0]));
             handleDialogClose();
           }
         })

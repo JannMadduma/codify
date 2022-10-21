@@ -3,31 +3,68 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Alert,
+  Avatar,
+  Button,
+  ButtonGroup,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  Drawer,
+  IconButton,
+  Input,
+  List,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import {
+  addFreelancer,
+  deleteFreelancer,
+  editFreelancer,
+  getAllFreelancers,
+} from "../../../../../service/FreelancersService";
+import {
+  addFreelancerAction,
+  deleteFreelancerAction,
+  editFreelancerAction,
+  setFreelancers,
+} from "../../../../../actions/FreelancersAction";
+import { SidebarContents } from "../../sidebarContents/SidebarContents";
+import AdminHeader from "../../../../common/AdminHeader";
 
 const mdTheme = createTheme();
 
 export default function Freelancers() {
   const dispatch = useDispatch();
-  const clients = useSelector((state) => state.clients);
-  const [open, setOpen] = React.useState(true);
-  const [client, setClient] = React.useState({});
-  const [openView, setOpenView] = React.useState(false);
+  const freelancers = useSelector((state) => state.freelancers);
+  const [freelancerDetails, setFreelancerDetails] = React.useState({});
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   const handleInputChange = (e) => {
-    setClient({ ...client, [e.target.name]: e.target.value });
+    setFreelancers({ ...freelancers, [e.target.name]: e.target.value });
   };
 
   const handleClickOpen = (i) => {
+    console.log(i);
     setError(false);
-    setClient(i);
+    setFreelancers(i);
     setEditOpen(true);
   };
 
@@ -35,48 +72,50 @@ export default function Freelancers() {
     setEditOpen(false);
   };
 
-  const handleOpenView = (i) => {
-    setClient(i);
-    setOpenView(true);
-  };
-
-  const handleCloseView = () => {
-    setOpenView(false);
-  };
-
   const handleEdit = () => {
     setError(false);
 
     if (
-      !client.idNo ||
-      !client.name ||
-      !client.concerns ||
-      !client.contactNo ||
-      !client.email ||
-      !client.availableTime ||
-      !client.validId ||
-      !client.payment
+      !freelancers.idNo ||
+      !freelancers.name ||
+      !freelancers.email ||
+      !freelancers.role ||
+      !freelancers.status ||
+      !freelancers.password
     ) {
       setError(true);
     } else {
-      if (client.idNo) {
-        // "deleteUser" is from service,UserService
-        editClients(client.idNo, { ...client, img: [...client.img] }).then(
+      if (freelancerDetails.idNo) {
+        const editedFreelancerDetails = {
+          ...freelancerDetails,
+          validId: freelancerDetails.validId,
+        };
+
+        delete editedFreelancerDetails.id;
+        delete editedFreelancerDetails.created_at;
+        delete editedFreelancerDetails.updated_at;
+
+        editFreelancer(freelancerDetails.idNo, editedFreelancerDetails).then(
           (res) => {
-            // "deleteUserAction" is from actions, UsersAction
-            console.log(res.data.img);
-            dispatch(editClientsAction(res.data));
+            dispatch(
+              editFreelancerAction({
+                ...res.data.Freelancers,
+                idNo: freelancerDetails.idNo,
+              })
+            );
           }
         );
         handleClose();
       } else {
-        const clientToAdd = {
-          ...client,
-          img: client?.img?.length ? client?.img : [],
+        const freelancerToAdd = {
+          ...freelancerDetails,
+          validId: freelancerDetails?.validId?.length
+            ? freelancerDetails?.validId
+            : [],
         };
 
-        addClient(clientToAdd).then((res) => {
-          dispatch(addClientAction(res.data));
+        addFreelancer(freelancerToAdd).then((res) => {
+          dispatch(addFreelancerAction(res.data));
         });
         handleClose();
       }
@@ -84,25 +123,24 @@ export default function Freelancers() {
   };
 
   React.useEffect(() => {
-    getAllClients().then((res) => {
-      dispatch(setClients(res.data));
+    getAllFreelancers().then((res) => {
+      dispatch(setFreelancers(res.data.freelancers));
     });
   }, []);
 
   // to delete Client
-  const handleClientDelete = () => {
+  const handleFreelancerDelete = () => {
     // "deleteClients" is from service, ClientsService
-    deleteClient(client.id).then((res) => {
+    deleteFreelancer(freelancers.idNo).then((res) => {
       // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(deleteClientAction({ id: client.id }));
+      dispatch(deleteFreelancerAction({ idNo: freelancers.idNo }));
     });
     handleCloseConfirmDelete();
   };
 
   // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
-    console.log("Confirm detete?");
-    setClient(i);
+    setFreelancers(i);
     setOpenConfirm(true);
   };
 
@@ -110,23 +148,26 @@ export default function Freelancers() {
     setOpenConfirm(false);
   };
 
-  const handleImgChange = (e) => {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onloadend = function (e) {
-      setClient({ ...client, img: [reader.result] });
-    };
-  };
-
   return (
     <ThemeProvider theme={mdTheme}>
+      <AdminHeader />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+        {/* sidebar design */}
+        <Box variant="permanent">
+          <Toolbar
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              margin: "5%",
+              px: [1],
+            }}
+          ></Toolbar>
+          <List component="nav">{SidebarContents}</List>
+        </Box>
         {/* main contents design */}
         <Box
-          component="main"
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === "light"
@@ -137,38 +178,50 @@ export default function Freelancers() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
           {/* contents */}
-          <Container maxWidth="lg" sx={{ mb: 4 }}>
+          <Box maxWidth="100%" sx={{ mb: 4, margin: "5% 2%" }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <Table size="small">
                     <TableHead>
                       <TableRow>
+                        <TableCell>
+                          TOTAL Freelancers = {freelancers.length}
+                        </TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell>
+                          <Input>search</Input>
+                        </TableCell>
+                        <TableCell align="center">
+                          <Button onClick={() => handleClickOpen({})}>
+                            ADD Freelancers
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
                         <TableCell>ID No.</TableCell>
                         <TableCell>Name</TableCell>
-                        <TableCell>Concerns</TableCell>
-                        <TableCell>Contact No.</TableCell>
                         <TableCell>Email</TableCell>
-                        <TableCell>Available Time</TableCell>
-                        <TableCell>Valid ID</TableCell>
-                        <TableCell>Payment</TableCell>
-                        <TableCell align="right">Actions</TableCell>
+                        <TableCell>Role</TableCell>
+                        <TableCell>Status</TableCell>
+                        <TableCell>Password</TableCell>
+                        <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {clients.map((row) => (
+                      {freelancers.map((row) => (
                         <TableRow key={row?.idNo}>
                           <TableCell>{row?.idNo}</TableCell>
                           <TableCell>{row?.name}</TableCell>
-                          <TableCell>{row?.concerns}</TableCell>
-                          <TableCell>{row?.contactNo}</TableCell>
                           <TableCell>{row?.email}</TableCell>
-                          <TableCell>{row?.availableTime}</TableCell>
-                          <TableCell>{row?.validId}</TableCell>
-                          <TableCell>{row?.payment}</TableCell>
-                          <TableCell align="right">
+                          <TableCell>{row?.role}</TableCell>
+                          <TableCell>{row?.status}</TableCell>
+                          <TableCell>{row?.password}</TableCell>
+                          <TableCell align="center">
                             <div
                               sx={{
                                 display: "flex",
@@ -184,27 +237,29 @@ export default function Freelancers() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button
-                                  onClick={() => {
-                                    handleOpenView(row);
-                                  }}
-                                >
-                                  View
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleClickOpen(row);
-                                  }}
-                                >
-                                  Edit
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleOpenConfirmDelete(row);
-                                  }}
-                                >
-                                  Delete
-                                </Button>
+                                <Tooltip title="Edit">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleClickOpen(row);
+                                    }}
+                                  >
+                                    <ModeEditOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
+                                <Divider
+                                  orientation="vertical"
+                                  variant="middle"
+                                  flexItem
+                                />
+                                <Tooltip title="Delete">
+                                  <IconButton
+                                    onClick={() => {
+                                      handleOpenConfirmDelete(row);
+                                    }}
+                                  >
+                                    <DeleteOutlineIcon />
+                                  </IconButton>
+                                </Tooltip>
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -215,10 +270,9 @@ export default function Freelancers() {
                 </Paper>
               </Grid>
             </Grid>
-          </Container>
+          </Box>
         </Box>
       </Box>
-      <ViewModal open={openView} setOpen={setOpenView} client={client} />
       <Dialog
         maxWidth="sm"
         fullWidth
@@ -227,14 +281,14 @@ export default function Freelancers() {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {client.id ? "Edit" : "Add"} Client
+          {freelancers.id ? "Edit" : "Add"} Freelancer
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
           <TextField
             autoFocus
             margin="dense"
-            value={client?.name}
+            value={freelancers?.name}
             type="text"
             fullWidth
             variant="outlined"
@@ -244,27 +298,7 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={client?.concerns}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="concerns"
-            label="Concerns"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={client?.contactNo}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="conctactNo"
-            label="ContactNO"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={client?.email}
+            value={freelancers?.email}
             type="text"
             fullWidth
             variant="outlined"
@@ -274,47 +308,34 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={client?.availableTime}
+            value={freelancers?.role}
             type="text"
             fullWidth
             variant="outlined"
-            name="availableTime"
-            label="Available Time"
+            name="role"
+            label="Role"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={client?.validId}
+            value={freelancers?.status}
             type="text"
             fullWidth
             variant="outlined"
-            name="validId"
-            label="Valid Id"
+            name="status"
+            label="Status"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={client?.payment}
+            value={freelancers?.password}
             type="text"
             fullWidth
             variant="outlined"
-            name="payment"
-            label="Payment"
+            name="password"
+            label="password"
             onChange={handleInputChange}
           />
-          <Button component="label" variant="outlined" sx={{ mt: 1 }}>
-            Upload ID
-            <input
-              type="file"
-              accept="image/*"
-              hidden
-              onChange={handleImgChange}
-            />
-          </Button>
-
-          {!!client?.img?.length && (
-            <img src={client.img[0]} style={{ width: "100%", marginTop: 8 }} />
-          )}
         </DialogContent>
 
         <DialogActions>
@@ -335,7 +356,8 @@ export default function Freelancers() {
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{client?.name}</strong>?
+            Are you sure you want to delete <strong>{freelancers?.name}</strong>
+            ?
           </Typography>
         </DialogContent>
 
@@ -343,7 +365,7 @@ export default function Freelancers() {
           <Button autoFocus onClick={handleCloseConfirmDelete}>
             No
           </Button>
-          <Button onClick={handleClientDelete}>Yes</Button>
+          <Button onClick={handleFreelancerDelete}>Yes</Button>
         </DialogActions>
       </Dialog>
     </ThemeProvider>
