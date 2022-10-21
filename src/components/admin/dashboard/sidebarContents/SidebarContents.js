@@ -9,9 +9,29 @@ import WorkIcon from "@mui/icons-material/Work";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const Div = styled("div")(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(1),
+}));
 
 export const SidebarContents = (
   <React.Fragment>
+    <Typography align="center">
+      <Div>{"ADMIN"}</Div>
+    </Typography>
+
+    <ListItemButton>
+      {/* component={Link} to={"/subscribed"} */}
+      <ListItemIcon>
+        <MailOutlineIcon />
+      </ListItemIcon>
+      <ListItemText primary="Subscribed" />
+    </ListItemButton>
+
     <ListItemButton>
       {/* component={Link} to={"/freelancers"} */}
       <ListItemIcon>
@@ -19,6 +39,16 @@ export const SidebarContents = (
       </ListItemIcon>
       <ListItemText primary="Freelancers" />
     </ListItemButton>
+
+    <br />
+
+    <Typography align="center">
+      <Div>
+        {"CLIENT"}
+        <br />
+        {"MANAGEMENT"}
+      </Div>
+    </Typography>
 
     <ListItemButton>
       {/* component={Link} to={"/pendingclients"} */}
@@ -35,6 +65,16 @@ export const SidebarContents = (
       <ListItemText primary="Clients" />
     </ListItemButton>
 
+    <br />
+
+    <Typography align="center">
+      <Div>
+        {"PROJECT"}
+        <br />
+        {"MANAGEMENT"}
+      </Div>
+    </Typography>
+
     <ListItemButton>
       {/* component={Link} to={"/pendingprojects"} */}
       <ListItemIcon>
@@ -49,14 +89,6 @@ export const SidebarContents = (
         <WorkIcon />
       </ListItemIcon>
       <ListItemText primary="Projects" />
-    </ListItemButton>
-
-    <ListItemButton>
-      {/* component={Link} to={"/subscribed"} */}
-      <ListItemIcon>
-        <MailOutlineIcon />
-      </ListItemIcon>
-      <ListItemText primary="Subscribed" />
     </ListItemButton>
   </React.Fragment>
 );
