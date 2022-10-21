@@ -3,7 +3,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -44,7 +43,7 @@ import {
   setClients,
 } from "../../../../../actions/ClientActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import Header from "../../../../common/Header";
+import AdminHeader from "../../../../common/AdminHeader";
 
 const mdTheme = createTheme();
 
@@ -154,7 +153,7 @@ export default function Clients() {
 
   return (
     <ThemeProvider theme={mdTheme}>
-      <Header />
+      <AdminHeader />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         {/* sidebar design */}
