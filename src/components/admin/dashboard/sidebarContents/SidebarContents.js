@@ -49,8 +49,7 @@ export const SidebarContents = (
       </Div>
     </Typography>
 
-    <ListItemButton>
-      {/* component={Link} to={"/pendingclients"} */}
+    <ListItemButton component={Link} to={"/pendingclients"}>
       <ListItemIcon>
         <PeopleOutlineIcon />
       </ListItemIcon>
@@ -74,16 +73,14 @@ export const SidebarContents = (
       </Div>
     </Typography>
 
-    <ListItemButton>
-      {/* component={Link} to={"/pendingprojects"} */}
+    <ListItemButton component={Link} to={"/pendingprojects"}>
       <ListItemIcon>
         <WorkOutlineIcon />
       </ListItemIcon>
       <ListItemText primary="Pending Projects" />
     </ListItemButton>
 
-    <ListItemButton>
-      {/* component={Link} to={"/projects"} */}
+    <ListItemButton component={Link} to={"/projects"}>
       <ListItemIcon>
         <WorkIcon />
       </ListItemIcon>

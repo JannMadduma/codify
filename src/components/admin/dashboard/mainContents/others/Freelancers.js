@@ -187,7 +187,7 @@ export default function Freelancers() {
                     <TableHead>
                       <TableRow>
                         <TableCell>
-                          TOTAL Freelancers = {freelancers.length}
+                          TOTAL FREELANCERS = {freelancers.length}
                         </TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>

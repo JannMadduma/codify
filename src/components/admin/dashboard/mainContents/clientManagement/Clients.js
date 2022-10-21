@@ -48,7 +48,7 @@ import AdminHeader from "../../../../common/AdminHeader";
 
 const mdTheme = createTheme();
 
-export default function Clients() {
+export default function Clients({ isPending }) {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
@@ -128,7 +128,10 @@ export default function Clients() {
 
   React.useEffect(() => {
     getAllClients().then((res) => {
-      dispatch(setClients(res.data.clients));
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setClients(res.data.clients.filter((c) => c.isPending === toFilter))
+      );
     });
   }, []);
 
@@ -242,6 +245,7 @@ export default function Clients() {
                                 },
                               }}
                             >
+                              {isPending && <Button>Test</Button>}
                               <ButtonGroup
                                 variant="text"
                                 aria-label="text button group"

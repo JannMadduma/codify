@@ -11,6 +11,7 @@ import PendingProjects from "./components/admin/dashboard/mainContents/projectMa
 import Projects from "./components/admin/dashboard/mainContents/projectManagement/Projects";
 import Clients from "./components/admin/dashboard/mainContents/clientManagement/Clients";
 import Freelancers from "./components/admin/dashboard/mainContents/others/Freelancers";
+import Subscribed from "./components/admin/dashboard/mainContents/others/Subscribed";
 
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
   if (!isAllowed) {
@@ -35,13 +36,14 @@ const ComponentRoute = () => {
       <Route
         element={<ProtectedRoute isAllowed={loggedIn?.role === "admin"} />}
       >
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/pendingclients" element={<PendingClients />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} /> */}
       <Route path="/admin" element={<SignInButton />} />
+      <Route path="/pendingclients" element={<PendingClients />} />
       <Route path="/clients" element={<Clients />} />
-      {/* <Route path="/pendingprojects" element={<PendingProjects />} /> */}
+      <Route path="/pendingprojects" element={<PendingProjects />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/freelancers" element={<Freelancers />} />
+      <Route path="/subscribed" element={<Subscribed />} />
     </Routes>
   );
 };

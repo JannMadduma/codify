@@ -47,7 +47,7 @@ import AdminHeader from "../../../../common/AdminHeader";
 
 const mdTheme = createTheme();
 
-export default function Projects() {
+export default function Projects({ isPending }) {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
   const [projectDetails, setProjectDetails] = React.useState({});
@@ -128,7 +128,10 @@ export default function Projects() {
   };
   React.useEffect(() => {
     getAllProjects().then((res) => {
-      dispatch(setProjects(res.data.projects));
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setProjects(res.data.projects.filter((c) => c.isPending === toFilter))
+      );
     });
   }, []);
 
