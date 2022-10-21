@@ -44,6 +44,7 @@ import {
   setClients,
 } from "../../../../../actions/ClientActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
+import Header from "../../../../common/Header";
 
 const mdTheme = createTheme();
 
@@ -153,6 +154,7 @@ export default function Clients() {
 
   return (
     <ThemeProvider theme={mdTheme}>
+      <Header />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         {/* sidebar design */}
