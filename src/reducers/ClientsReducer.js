@@ -5,17 +5,17 @@ let index;
 
 export default function ClientsReducer(state = clientsState, action) {
   switch (action.type) {
+    // SET
     case actionTypes.SET_CLIENTSS:
       return action.clients;
+    // ADD
     case actionTypes.ADD_CLIENTS:
       return [
         { ...action.clientDetails, idNo: action.clientDetails.id },
         ...state,
       ];
+    // EDIT
     case actionTypes.EDIT_CLIENTS:
-      console.log("bulot");
-      console.log(state);
-      console.log(action);
       index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
 
       return [
@@ -23,6 +23,7 @@ export default function ClientsReducer(state = clientsState, action) {
         action.clientDetails,
         ...state.slice(index + 1), // everything after current item
       ];
+    // DELETE
     case actionTypes.DELETE_CLIENTS:
       index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
 

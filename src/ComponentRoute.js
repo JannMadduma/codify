@@ -27,10 +27,10 @@ const ComponentRoute = () => {
       {/* Public View       */}
       <Route index element={<Home />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/portfolio" element={<Home />} />
+      {/* <Route path="/portfolio" element={<Home />} />
       <Route path="/pricing" element={<PricingService />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/contactus" element={<ContactUs />} />
+      <Route path="/contactus" element={<ContactUs />} /> */}
 
       {/* Admin View */}
       {/* <Route path="/admin" element={<SignInButton />} />
