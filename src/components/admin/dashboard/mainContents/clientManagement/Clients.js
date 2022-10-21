@@ -164,6 +164,7 @@ export default function Clients() {
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
+              margin: "5%",
               px: [1],
             }}
           ></Toolbar>
@@ -171,7 +172,6 @@ export default function Clients() {
         </Box>
         {/* main contents design */}
         <Box
-          component="main"
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === "light"
@@ -182,9 +182,8 @@ export default function Clients() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
           {/* contents */}
-          <Container maxWidth="lg" sx={{ mb: 4 }}>
+          <Box maxWidth="100%" sx={{ mb: 4, margin: "5% 2%" }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
@@ -279,7 +278,7 @@ export default function Clients() {
                 </Paper>
               </Grid>
             </Grid>
-          </Container>
+          </Box>
         </Box>
       </Box>
       <Dialog
