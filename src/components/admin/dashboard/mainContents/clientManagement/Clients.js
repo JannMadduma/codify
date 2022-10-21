@@ -19,7 +19,9 @@ import {
   DialogContent,
   DialogTitle,
   Divider,
+  Drawer,
   IconButton,
+  List,
   Table,
   TableBody,
   TableCell,
@@ -41,6 +43,7 @@ import {
   editClientAction,
   setClients,
 } from "../../../../../actions/ClientActions";
+import { SidebarContents } from "../../sidebarContents/SidebarContents";
 
 const mdTheme = createTheme();
 
@@ -152,6 +155,18 @@ export default function Clients() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+        {/* sidebar design */}
+        <Box variant="permanent">
+          <Toolbar
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              px: [1],
+            }}
+          ></Toolbar>
+          <List component="nav">{SidebarContents}</List>
+        </Box>
         {/* main contents design */}
         <Box
           component="main"
@@ -229,7 +244,7 @@ export default function Clients() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Tooltip title="Delete">
+                                <Tooltip title="Edit">
                                   <IconButton
                                     onClick={() => {
                                       handleClickOpen(row);

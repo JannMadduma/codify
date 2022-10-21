@@ -2,16 +2,14 @@ import "./App.css";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SignInButton from "./components/admin/adminpage/LoginButton";
-import Client from "./components/admin/adminpage/admin_maybeLandingP";
 import AboutUs from "./components/Home/about/AboutUs";
 import PricingService from "./components/Home/pricingservices/PricingService";
 import ContactUs from "./components/Home/heropage/ContactUs";
 import { useSelector } from "react-redux";
-import Dashboard from "./components/admin/dashboard/Dashboard";
 import PendingClients from "./components/admin/dashboard/mainContents/clientManagement/PendingClients";
-import Clients from "./components/admin/dashboard/mainContents/clientManagement/Clients";
 import PendingProjects from "./components/admin/dashboard/mainContents/projectManagement/PendingProjects";
 import Projects from "./components/admin/dashboard/mainContents/projectManagement/Projects";
+import Clients from "./components/admin/dashboard/mainContents/clientManagement/Clients";
 
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
   if (!isAllowed) {
@@ -35,17 +33,17 @@ const ComponentRoute = () => {
       <Route path="/contactus" element={<ContactUs />} />
 
       {/* Admin View */}
-      <Route path="/admin" element={<SignInButton />} />
+      {/* <Route path="/admin" element={<SignInButton />} />
       <Route path="/client" element={<Client />} />
       <Route
         element={<ProtectedRoute isAllowed={loggedIn?.role === "admin"} />}
       >
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/pendingclients" element={<PendingClients />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/pendingprojects" element={<PendingProjects />} />
-        <Route path="/projects" element={<Projects />} />
-      </Route>
+        <Route path="/pendingclients" element={<PendingClients />} /> */}
+      <Route path="/admin" element={<SignInButton />} />
+      <Route path="/clients" element={<Clients />} />
+      {/* <Route path="/pendingprojects" element={<PendingProjects />} />
+      <Route path="/projects" element={<Projects />} /> */}
     </Routes>
   );
 };

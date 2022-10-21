@@ -10,15 +10,10 @@ const store = ConfigureStore();
 function app() {
   return (
     <Provider store={store}>
-      <Clients />
+      <BrowserRouter>
+        <ComponentRoute />
+      </BrowserRouter>
     </Provider>
-    // <Provider store={store}>
-    //   <div className="App">
-    //     <BrowserRouter>
-    //       <ComponentRoute />
-    //     </BrowserRouter>
-    //   </div>
-    // </Provider>
   );
 }
 

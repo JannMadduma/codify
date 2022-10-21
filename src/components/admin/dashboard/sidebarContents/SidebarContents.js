@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const SidebarContents = (
   <React.Fragment>
-    <ListItemButton component={Link} to={"/freelancers"}>
+    {/* <ListItemButton component={Link} to={"/freelancers"}>
       <ListItemIcon>
         <NightShelterIcon />
       </ListItemIcon>
@@ -21,7 +21,7 @@ export const SidebarContents = (
         <GroupIcon />
       </ListItemIcon>
       <ListItemText primary="Pending Clients" />
-    </ListItemButton>
+    </ListItemButton> */}
 
     <ListItemButton component={Link} to={"/clients"}>
       <ListItemIcon>
@@ -30,7 +30,7 @@ export const SidebarContents = (
       <ListItemText primary="Clients" />
     </ListItemButton>
 
-    <ListItemButton component={Link} to={"/pendingprojects"}>
+    {/* <ListItemButton component={Link} to={"/pendingprojects"}>
       <ListItemIcon>
         <MarkEmailReadIcon />
       </ListItemIcon>
@@ -49,6 +49,6 @@ export const SidebarContents = (
         <MarkEmailReadIcon />
       </ListItemIcon>
       <ListItemText primary="Subscribed" />
-    </ListItemButton>
+    </ListItemButton> */}
   </React.Fragment>
 );
