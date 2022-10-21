@@ -14,7 +14,6 @@ export function addClientAction(clientDetails) {
 }
 
 export function editClientAction(clientDetails) {
-  console.log("butot");
   return { type: actionTypes.EDIT_CLIENTS, clientDetails };
 }
 
