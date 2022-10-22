@@ -57,7 +57,6 @@ export default function Clients({ isPending }) {
   const [searchQuery, setSearchQuery] = React.useState([]);
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
-  // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -120,7 +119,6 @@ export default function Clients({ isPending }) {
   };
 
   const handleEdit = () => {
-    console.log("handle edt", clientDetails);
     setError(false);
 
     if (
@@ -165,11 +163,8 @@ export default function Clients({ isPending }) {
     }
   };
 
-  // to delete Client
   const handleClientDelete = () => {
-    // "deleteClients" is from service, ClientsService
     deleteClients(clientDetails.idNo).then(() => {
-      // "deleteClientsAction" is from actions, ClientsAction
       dispatch(deleteClientAction({ idNo: clientDetails.idNo }));
     });
     handleCloseConfirmDelete();
@@ -191,7 +186,6 @@ export default function Clients({ isPending }) {
     handleCloseConfirmDelete();
   };
 
-  // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
     setClientDetails(i);
     setOpenConfirm(true);

@@ -18,9 +18,11 @@ export function addFreelancerAction(freelancerDetails) {
 }
 
 export function editFreelancerAction(freelancerDetails) {
+  console.log(freelancerDetails);
   return { type: actionTypes.EDIT_FREELANCER, freelancerDetails };
 }
 
 export function deleteFreelancerAction(freelancerDetails) {
+  console.log(freelancerDetails);
   return { type: actionTypes.DELETE_FREELANCER, freelancerDetails };
 }

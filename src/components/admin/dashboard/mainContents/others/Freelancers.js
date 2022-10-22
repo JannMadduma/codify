@@ -51,20 +51,23 @@ const mdTheme = createTheme();
 export default function Freelancers() {
   const dispatch = useDispatch();
   const freelancers = useSelector((state) => state.freelancers);
-  const [freelancerDetails, setFreelancerDetails] = React.useState({});
-  // for delete confirm dialog
+  const [freelancerDetails, setfreelancerDetails] = React.useState({});
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   const handleInputChange = (e) => {
-    setFreelancers({ ...freelancers, [e.target.name]: e.target.value });
+    console.log({ ...freelancerDetails, [e.target.name]: e.target.value });
+    setfreelancerDetails({
+      ...freelancerDetails,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleClickOpen = (i) => {
     console.log(i);
     setError(false);
-    setFreelancers(i);
+    setfreelancerDetails(i);
     setEditOpen(true);
   };
 
@@ -74,21 +77,20 @@ export default function Freelancers() {
 
   const handleEdit = () => {
     setError(false);
+    console.log(freelancerDetails);
 
     if (
-      !freelancers.idNo ||
-      !freelancers.name ||
-      !freelancers.email ||
-      !freelancers.role ||
-      !freelancers.status ||
-      !freelancers.password
+      !freelancerDetails.name ||
+      !freelancerDetails.email ||
+      !freelancerDetails.role ||
+      !freelancerDetails.status ||
+      !freelancerDetails.password
     ) {
       setError(true);
     } else {
       if (freelancerDetails.idNo) {
         const editedFreelancerDetails = {
           ...freelancerDetails,
-          validId: freelancerDetails.validId,
         };
 
         delete editedFreelancerDetails.id;
@@ -99,7 +101,7 @@ export default function Freelancers() {
           (res) => {
             dispatch(
               editFreelancerAction({
-                ...res.data.Freelancers,
+                ...res.data.freelancer,
                 idNo: freelancerDetails.idNo,
               })
             );
@@ -109,44 +111,40 @@ export default function Freelancers() {
       } else {
         const freelancerToAdd = {
           ...freelancerDetails,
-          validId: freelancerDetails?.validId?.length
-            ? freelancerDetails?.validId
-            : [],
         };
 
         addFreelancer(freelancerToAdd).then((res) => {
-          dispatch(addFreelancerAction(res.data));
+          dispatch(addFreelancerAction(res.data.freelancer));
         });
         handleClose();
       }
     }
   };
 
-  React.useEffect(() => {
-    getAllFreelancers().then((res) => {
-      dispatch(setFreelancers(res.data.freelancers));
-    });
-  }, []);
-
-  // to delete Client
   const handleFreelancerDelete = () => {
-    // "deleteClients" is from service, ClientsService
-    deleteFreelancer(freelancers.idNo).then((res) => {
-      // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(deleteFreelancerAction({ idNo: freelancers.idNo }));
+    console.log("ASDFD");
+    console.log(freelancerDetails.idNo);
+    deleteFreelancer(freelancerDetails.idNo).then((res) => {
+      dispatch(deleteFreelancerAction({ idNo: freelancerDetails.idNo }));
     });
     handleCloseConfirmDelete();
   };
 
-  // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
-    setFreelancers(i);
+    setfreelancerDetails(i);
     setOpenConfirm(true);
   };
 
   const handleCloseConfirmDelete = () => {
     setOpenConfirm(false);
   };
+
+  React.useEffect(() => {
+    getAllFreelancers().then((res) => {
+      console.log(res);
+      dispatch(setFreelancers(res.data.freelancers));
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -288,7 +286,7 @@ export default function Freelancers() {
           <TextField
             autoFocus
             margin="dense"
-            value={freelancers?.name}
+            value={freelancerDetails?.name}
             type="text"
             fullWidth
             variant="outlined"
@@ -298,7 +296,7 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={freelancers?.email}
+            value={freelancerDetails?.email}
             type="text"
             fullWidth
             variant="outlined"
@@ -308,7 +306,7 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={freelancers?.role}
+            value={freelancerDetails?.role}
             type="text"
             fullWidth
             variant="outlined"
@@ -318,7 +316,7 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={freelancers?.status}
+            value={freelancerDetails?.status}
             type="text"
             fullWidth
             variant="outlined"
@@ -328,7 +326,7 @@ export default function Freelancers() {
           />
           <TextField
             margin="dense"
-            value={freelancers?.password}
+            value={freelancerDetails?.password}
             type="text"
             fullWidth
             variant="outlined"
@@ -356,8 +354,8 @@ export default function Freelancers() {
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{freelancers?.name}</strong>
-            ?
+            Are you sure you want to delete{" "}
+            <strong>{freelancerDetails?.name}</strong>?
           </Typography>
         </DialogContent>
 
