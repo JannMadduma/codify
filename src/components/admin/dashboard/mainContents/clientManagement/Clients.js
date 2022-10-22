@@ -39,17 +39,14 @@ import {
   deleteClients,
   editClients,
   getAllClients,
-  approveClients,
 } from "../../../../../service/ClientService";
 import {
   addClientAction,
+  approveClientAction,
   deleteClientAction,
   editClientAction,
   setClients,
-  approveClientAction,
 } from "../../../../../actions/ClientActions";
-import { approveProjects } from "../../../../../service/ProjectService";
-import { approveProjecAction } from "../../../../../actions/ProjectActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
 import AdminHeader from "../../../../common/AdminHeader";
 
@@ -123,6 +120,7 @@ export default function Clients({ isPending }) {
   };
 
   const handleEdit = () => {
+    console.log("handle edt", clientDetails);
     setError(false);
 
     if (
@@ -155,6 +153,7 @@ export default function Clients({ isPending }) {
       } else {
         const clientToAdd = {
           ...clientDetails,
+          isPending: 1,
           validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
         };
 
@@ -165,15 +164,6 @@ export default function Clients({ isPending }) {
       }
     }
   };
-
-  React.useEffect(() => {
-    getAllClients().then((res) => {
-      const toFilter = isPending ? 1 : 0;
-      dispatch(
-        setClients(res.data.clients.filter((c) => c.isPending === toFilter))
-      );
-    });
-  }, []);
 
   // to delete Client
   const handleClientDelete = () => {
@@ -186,21 +176,19 @@ export default function Clients({ isPending }) {
   };
 
   const handleClientApprove = () => {
-    // "deleteClients" is from service, ClientsService
-    approveClients(clientDetails.isPending).then(() => {
-      // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(approveClientAction({ idNo: clientDetails.isPending }));
+    const editedClientDetails = {
+      ...clientDetails,
+      isPending: 0,
+    };
+
+    delete editedClientDetails.id;
+    delete editedClientDetails.created_at;
+    delete editedClientDetails.updated_at;
+
+    editClients(clientDetails.idNo, editedClientDetails).then((res) => {
+      dispatch(approveClientAction({ idNo: clientDetails.idNo }));
     });
     handleCloseConfirmDelete();
-  };
-
-  const handleProjectApprove = () => {
-    // "deleteClients" is from service, ClientsService
-    approveProjects(clientDetails.isPending).then(() => {
-      // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(approveProjecAction({ idNo: clientDetails.isPending }));
-    });
-    handleCloseConfirmApprove();
   };
 
   // to avoid deleting right away, added dialog for confirm
@@ -214,11 +202,6 @@ export default function Clients({ isPending }) {
     setOpenConfirm(true);
   };
 
-  const handleOpenConfirmApproveProject = (i) => {
-    setClientDetails(i);
-    setOpenConfirm(true);
-  };
-
   const handleCloseConfirmDelete = () => {
     setOpenConfirm(false);
   };
@@ -227,9 +210,15 @@ export default function Clients({ isPending }) {
     setOpenConfirm(false);
   };
 
-  const handleCloseConfirmApproveProject = () => {
-    setOpenConfirm(false);
-  };
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setClients(res.data.clients.filter((c) => c.isPending === toFilter))
+      );
+    });
+  }, []);
+
   return (
     <ThemeProvider theme={mdTheme}>
       <AdminHeader />
@@ -341,7 +330,6 @@ export default function Clients({ isPending }) {
                           <TableCell>
                             <Avatar variant="rounded" src={row?.validId} />
                           </TableCell>
-
                           <TableCell align="center">
                             <div
                               sx={{
@@ -381,32 +369,23 @@ export default function Clients({ isPending }) {
                                     <DeleteOutlineIcon />
                                   </IconButton>
                                 </Tooltip>
-                                <Divider
-                                  orientation="vertical"
-                                  variant="middle"
-                                  flexItem
-                                />
                                 {isPending && (
-                                  <Tooltip title="Approve Client">
-                                    <IconButton
-                                      onClick={() => {
-                                        handleOpenConfirmapprove(row);
-                                      }}
-                                    >
-                                      <DoneIcon />
-                                    </IconButton>
-                                  </Tooltip>
-                                )}
-                                {!isPending && (
-                                  <Tooltip title="Approve Project">
-                                    <IconButton
-                                      onClick={() => {
-                                        handleOpenConfirmApproveProject(row);
-                                      }}
-                                    >
-                                      <PendingActionsIcon />
-                                    </IconButton>
-                                  </Tooltip>
+                                  <>
+                                    <Divider
+                                      orientation="vertical"
+                                      variant="middle"
+                                      flexItem
+                                    />
+                                    <Tooltip title="Approve Client">
+                                      <IconButton
+                                        onClick={() => {
+                                          handleOpenConfirmapprove(row);
+                                        }}
+                                      >
+                                        <DoneIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                  </>
                                 )}
                               </ButtonGroup>
                             </div>
@@ -560,28 +539,6 @@ export default function Clients({ isPending }) {
             No
           </Button>
           <Button onClick={handleClientApprove}>Yes</Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={openConfirm}
-        onClose={handleCloseConfirmDelete}
-        aria-labelledby="draggable-dialog-title"
-      >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          Confirm Approve Project
-        </DialogTitle>
-        <DialogContent>
-          <Typography>
-            Are you sure you want to approve the project{" "}
-            <strong>{clientDetails?.name}</strong>?
-          </Typography>
-        </DialogContent>
-
-        <DialogActions>
-          <Button autoFocus onClick={handleCloseConfirmApproveProject}>
-            No
-          </Button>
-          <Button onClick={handleProjectApprove}>Yes</Button>
         </DialogActions>
       </Dialog>
     </ThemeProvider>

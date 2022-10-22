@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import DoneIcon from "@mui/icons-material/Done";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
@@ -19,8 +20,12 @@ import {
   DialogTitle,
   Divider,
   Drawer,
+  FormControl,
   IconButton,
+  InputLabel,
   List,
+  MenuItem,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -38,23 +43,36 @@ import {
 } from "../../../../../service/ProjectService";
 import {
   addProjectAction,
+  approveProjecAction,
   deleteProjectAction,
   editProjectAction,
   setProjects,
 } from "../../../../../actions/ProjectActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
 import AdminHeader from "../../../../common/AdminHeader";
+import { getAllClients } from "../../../../../service/ClientService";
+import {
+  approveClientAction,
+  setClients,
+} from "../../../../../actions/ClientActions";
 
 const mdTheme = createTheme();
 
 export default function Projects({ isPending }) {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
+  const clients = useSelector((state) => state.clients);
   const [projectDetails, setProjectDetails] = React.useState({});
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
+
+  const getClientName = (id) => {
+    console.log(id);
+    console.log(clients);
+    return clients?.find((c) => parseInt(c.idNo) === parseInt(id))?.name || id;
+  };
 
   const handleInputChange = (e) => {
     setProjectDetails({ ...projectDetails, [e.target.name]: e.target.value });
@@ -117,6 +135,7 @@ export default function Projects({ isPending }) {
           GanteChartPic: projectDetails?.GanteChartPic?.length
             ? projectDetails?.GanteChartPic
             : [],
+          isPending: 1,
         };
 
         addProjects(projectToAdd).then((res) => {
@@ -126,18 +145,26 @@ export default function Projects({ isPending }) {
       }
     }
   };
-  React.useEffect(() => {
-    getAllProjects().then((res) => {
-      const toFilter = isPending ? 1 : 0;
-      dispatch(
-        setProjects(res.data.projects.filter((c) => c.isPending === toFilter))
-      );
-    });
-  }, []);
 
   const handleProjectDelete = () => {
     deleteProjects(projectDetails.idNo).then(() => {
       dispatch(deleteProjectAction({ idNo: projectDetails.idNo }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  const handleProjectApprove = () => {
+    const editedProjectDetails = {
+      ...projectDetails,
+      isPending: 0,
+    };
+
+    delete editedProjectDetails.id;
+    delete editedProjectDetails.created_at;
+    delete editedProjectDetails.updated_at;
+
+    editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
+      dispatch(approveProjecAction({ idNo: projectDetails.idNo }));
     });
     handleCloseConfirmDelete();
   };
@@ -148,9 +175,34 @@ export default function Projects({ isPending }) {
     setOpenConfirm(true);
   };
 
+  const handleCloseConfirmApprove = () => {
+    setOpenConfirm(false);
+  };
+
   const handleCloseConfirmDelete = () => {
     setOpenConfirm(false);
   };
+
+  const handleOpenConfirmApproveProject = (i) => {
+    setProjectDetails(i);
+    setOpenConfirm(true);
+  };
+
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      console.log(res.data.clients.filter((c) => c.isPending === 0));
+      dispatch(setClients(res.data.clients.filter((c) => c.isPending === 0)));
+    });
+  }, []);
+
+  React.useEffect(() => {
+    getAllProjects().then((res) => {
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setProjects(res.data.projects.filter((c) => c.isPending === toFilter))
+      );
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -217,7 +269,9 @@ export default function Projects({ isPending }) {
                         <TableRow key={row?.idNo}>
                           <TableCell>{row?.idNo}</TableCell>
                           <TableCell>{row?.Projectname}</TableCell>
-                          <TableCell>{row?.ClientName}</TableCell>
+                          <TableCell>
+                            {getClientName(row?.ClientName)}
+                          </TableCell>
                           <TableCell>{row?.Status}</TableCell>
                           <TableCell>
                             <Avatar
@@ -264,6 +318,24 @@ export default function Projects({ isPending }) {
                                     <DeleteOutlineIcon />
                                   </IconButton>
                                 </Tooltip>
+                                {isPending && (
+                                  <>
+                                    <Divider
+                                      orientation="vertical"
+                                      variant="middle"
+                                      flexItem
+                                    />
+                                    <Tooltip title="Approve Project">
+                                      <IconButton
+                                        onClick={() => {
+                                          handleOpenConfirmApproveProject(row);
+                                        }}
+                                      >
+                                        <DoneIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                  </>
+                                )}
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -300,7 +372,7 @@ export default function Projects({ isPending }) {
             label="Project Name"
             onChange={handleInputChange}
           />
-          <TextField
+          {/* <TextField
             margin="dense"
             value={projectDetails?.ClientName}
             type="text"
@@ -309,7 +381,21 @@ export default function Projects({ isPending }) {
             name="ClientName"
             label="Client Name"
             onChange={handleInputChange}
-          />
+          /> */}
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Client Name</InputLabel>
+            <Select
+              id="demo-simple-select"
+              value={projectDetails?.ClientName}
+              label="Client Name"
+              onChange={handleInputChange}
+              name="ClientName"
+            >
+              {clients.map((c) => (
+                <MenuItem value={c.idNo}>{c.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             margin="dense"
             value={projectDetails?.status}
@@ -365,6 +451,28 @@ export default function Projects({ isPending }) {
             No
           </Button>
           <Button onClick={handleProjectDelete}>Yes</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={openConfirm}
+        onClose={handleCloseConfirmDelete}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          Confirm Project Approve
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to approve the project{" "}
+            <strong>{projectDetails?.Projectname}</strong>?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseConfirmApprove}>
+            No
+          </Button>
+          <Button onClick={handleProjectApprove}>Yes</Button>
         </DialogActions>
       </Dialog>
     </ThemeProvider>

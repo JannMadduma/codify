@@ -27,7 +27,3 @@ export const editClients = async (id, clientDetails) => {
 export const deleteClients = async (id) => {
   return await axios.delete(`${clientDeleteURL}/${id}`);
 };
-
-export const approveClients = async (id) => {
-  return await axios.approve(`${deleteClientsURL}/${id}`);
-};

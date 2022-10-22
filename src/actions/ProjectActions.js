@@ -22,6 +22,6 @@ export function deleteProjectAction(projectDetails) {
   return { type: actionTypes.DELETE_PROJECT, projectDetails };
 }
 
-export function approveProjecAction(clientDetails) {
-  return { type: actionTypes.APPROVE_PROJECT, clientDetails };
+export function approveProjecAction(projectDetails) {
+  return { type: actionTypes.APPROVE_PROJECT, projectDetails };
 }

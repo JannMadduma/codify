@@ -38,7 +38,6 @@ export default function ClientsReducer(state = clientsState, action) {
 
       return [
         ...state.slice(0, index), // everything before current item
-        action.clientDetails,
         ...state.slice(index + 1), // everything after current item
       ];
     default:
