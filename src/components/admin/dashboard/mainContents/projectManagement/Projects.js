@@ -19,7 +19,6 @@ import {
   DialogContent,
   DialogTitle,
   Divider,
-  Drawer,
   FormControl,
   IconButton,
   InputLabel,
@@ -51,10 +50,7 @@ import {
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
 import AdminHeader from "../../../../common/AdminHeader";
 import { getAllClients } from "../../../../../service/ClientService";
-import {
-  approveClientAction,
-  setClients,
-} from "../../../../../actions/ClientActions";
+import { setClients } from "../../../../../actions/ClientActions";
 
 const mdTheme = createTheme();
 
@@ -63,7 +59,6 @@ export default function Projects({ isPending }) {
   const projects = useSelector((state) => state.projects);
   const clients = useSelector((state) => state.clients);
   const [projectDetails, setProjectDetails] = React.useState({});
-  // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -169,7 +164,6 @@ export default function Projects({ isPending }) {
     handleCloseConfirmDelete();
   };
 
-  // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
     setProjectDetails(i);
     setOpenConfirm(true);
@@ -248,7 +242,6 @@ export default function Projects({ isPending }) {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell></TableCell>
                         <TableCell align="center">
                           <Button onClick={() => handleClickOpen({})}>
                             ADD PROJECT
@@ -259,8 +252,7 @@ export default function Projects({ isPending }) {
                         <TableCell>Project Id</TableCell>
                         <TableCell>Project Name</TableCell>
                         <TableCell>Client Name</TableCell>
-                        <TableCell>Status</TableCell>
-                        <TableCell>Gante Chart</TableCell>
+                        <TableCell>Design</TableCell>
                         <TableCell align="center">Actions</TableCell>
                       </TableRow>
                     </TableHead>
@@ -272,7 +264,6 @@ export default function Projects({ isPending }) {
                           <TableCell>
                             {getClientName(row?.ClientName)}
                           </TableCell>
-                          <TableCell>{row?.Status}</TableCell>
                           <TableCell>
                             <Avatar
                               variant="rounded"
@@ -325,7 +316,7 @@ export default function Projects({ isPending }) {
                                       variant="middle"
                                       flexItem
                                     />
-                                    <Tooltip title="Approve Project">
+                                    <Tooltip title="Paid Project">
                                       <IconButton
                                         onClick={() => {
                                           handleOpenConfirmApproveProject(row);
