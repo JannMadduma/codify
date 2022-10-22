@@ -3,6 +3,7 @@ export const actionTypes = {
   ADD_CLIENTS: "ADD_CLIENTS",
   EDIT_CLIENTS: "EDIT_CLIENTS",
   DELETE_CLIENTS: "DELETE_CLIENTS",
+  APPROVE_CLIENTS: "APPROVE_CLIENTS",
 };
 
 export function setClients(clients) {
@@ -19,4 +20,8 @@ export function editClientAction(clientDetails) {
 
 export function deleteClientAction(clientDetails) {
   return { type: actionTypes.DELETE_CLIENTS, clientDetails };
+}
+
+export function approveClientAction(clientDetails) {
+  return { type: actionTypes.APPROVE_CLIENTS, clientDetails };
 }

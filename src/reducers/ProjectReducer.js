@@ -27,6 +27,14 @@ export default function ProjectsReducer(state = projectsState, action) {
         ...state.slice(0, index), // everything before current item
         ...state.slice(index + 1), // everything after current item
       ];
+    case actionTypes.APPROVE_PROJECT:
+      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
+
+      return [
+        ...state.slice(0, index), // everything before current item
+        action.projectDetails,
+        ...state.slice(index + 1), // everything after current item
+      ];
     default:
       return state;
   }

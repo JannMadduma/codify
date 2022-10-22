@@ -7,6 +7,9 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import SearchIcon from "@mui/icons-material/Search";
+import DoneIcon from "@mui/icons-material/Done";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
@@ -36,13 +39,17 @@ import {
   deleteClients,
   editClients,
   getAllClients,
+  approveClients,
 } from "../../../../../service/ClientService";
 import {
   addClientAction,
   deleteClientAction,
   editClientAction,
   setClients,
+  approveClientAction,
 } from "../../../../../actions/ClientActions";
+import { approveProjects } from "../../../../../service/ProjectService";
+import { approveProjecAction } from "../../../../../actions/ProjectActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
 import AdminHeader from "../../../../common/AdminHeader";
 
@@ -50,12 +57,45 @@ const mdTheme = createTheme();
 
 export default function Clients({ isPending }) {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = React.useState([]);
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
+
+  const SearchBar = ({ setSearchQuery }) => (
+    <form>
+      <TextField
+        id="search-bar"
+        className="text"
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+        label="Enter name"
+        variant="outlined"
+        placeholder="Search..."
+        size="small"
+      />
+      <IconButton type="submit" aria-label="search">
+        <SearchIcon style={{ fill: "blue" }} />
+      </IconButton>
+    </form>
+  );
+
+  const filterData = (query, clients) => {
+    if (!query) {
+      return clients;
+    } else {
+      return clients.filter(
+        ({ name, email }) =>
+          name?.toLowerCase().includes(query) ||
+          email?.toLowerCase().includes(query)
+      );
+    }
+  };
+  const dataFiltered = filterData(searchQuery, clients);
 
   const handleInputChange = (e) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
@@ -145,8 +185,36 @@ export default function Clients({ isPending }) {
     handleCloseConfirmDelete();
   };
 
+  const handleClientApprove = () => {
+    // "deleteClients" is from service, ClientsService
+    approveClients(clientDetails.isPending).then(() => {
+      // "deleteClientsAction" is from actions, ClientsAction
+      dispatch(approveClientAction({ idNo: clientDetails.isPending }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  const handleProjectApprove = () => {
+    // "deleteClients" is from service, ClientsService
+    approveProjects(clientDetails.isPending).then(() => {
+      // "deleteClientsAction" is from actions, ClientsAction
+      dispatch(approveProjecAction({ idNo: clientDetails.isPending }));
+    });
+    handleCloseConfirmApprove();
+  };
+
   // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
+    setClientDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleOpenConfirmapprove = (i) => {
+    setClientDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleOpenConfirmApproveProject = (i) => {
     setClientDetails(i);
     setOpenConfirm(true);
   };
@@ -155,6 +223,13 @@ export default function Clients({ isPending }) {
     setOpenConfirm(false);
   };
 
+  const handleCloseConfirmApprove = () => {
+    setOpenConfirm(false);
+  };
+
+  const handleCloseConfirmApproveProject = () => {
+    setOpenConfirm(false);
+  };
   return (
     <ThemeProvider theme={mdTheme}>
       <AdminHeader />
@@ -199,9 +274,43 @@ export default function Clients({ isPending }) {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell></TableCell>
                         <TableCell>
-                          <Input>search</Input>
+                          <Input>
+                            <div
+                              sx={{
+                                display: "flex",
+                                alignSelf: "center",
+                                justifyContent: "center",
+                                flexDirection: "column",
+                                padding: 20,
+                              }}
+                            >
+                              <SearchBar
+                                searchQuery={searchQuery}
+                                setSearchQuery={setSearchQuery}
+                              />
+                              <div style={{ padding: 3 }}>
+                                {dataFiltered.map((clients) => (
+                                  <div
+                                    className="text"
+                                    style={{
+                                      padding: 5,
+                                      justifyContent: "normal",
+                                      fontSize: 20,
+                                      color: "blue",
+                                      margin: 1,
+                                      width: "250px",
+                                      BorderColor: "green",
+                                      borderWidth: "10px",
+                                    }}
+                                    key={clients.id}
+                                  >
+                                    {clients}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </Input>
                         </TableCell>
                         <TableCell align="center">
                           <Button onClick={() => handleClickOpen({})}>
@@ -216,7 +325,6 @@ export default function Clients({ isPending }) {
                         <TableCell>Contact No.</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Available Time</TableCell>
-                        <TableCell>Status</TableCell>
                         <TableCell>Valid ID</TableCell>
                         <TableCell align="center">Actions</TableCell>
                       </TableRow>
@@ -230,10 +338,10 @@ export default function Clients({ isPending }) {
                           <TableCell>{row?.contactNo}</TableCell>
                           <TableCell>{row?.email}</TableCell>
                           <TableCell>{row?.availableTime}</TableCell>
-                          <TableCell>{row?.status}</TableCell>
                           <TableCell>
                             <Avatar variant="rounded" src={row?.validId} />
                           </TableCell>
+
                           <TableCell align="center">
                             <div
                               sx={{
@@ -245,7 +353,6 @@ export default function Clients({ isPending }) {
                                 },
                               }}
                             >
-                              {isPending && <Button>Test</Button>}
                               <ButtonGroup
                                 variant="text"
                                 aria-label="text button group"
@@ -274,6 +381,33 @@ export default function Clients({ isPending }) {
                                     <DeleteOutlineIcon />
                                   </IconButton>
                                 </Tooltip>
+                                <Divider
+                                  orientation="vertical"
+                                  variant="middle"
+                                  flexItem
+                                />
+                                {isPending && (
+                                  <Tooltip title="Approve Client">
+                                    <IconButton
+                                      onClick={() => {
+                                        handleOpenConfirmapprove(row);
+                                      }}
+                                    >
+                                      <DoneIcon />
+                                    </IconButton>
+                                  </Tooltip>
+                                )}
+                                {!isPending && (
+                                  <Tooltip title="Approve Project">
+                                    <IconButton
+                                      onClick={() => {
+                                        handleOpenConfirmApproveProject(row);
+                                      }}
+                                    >
+                                      <PendingActionsIcon />
+                                    </IconButton>
+                                  </Tooltip>
+                                )}
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -404,6 +538,50 @@ export default function Clients({ isPending }) {
             No
           </Button>
           <Button onClick={handleClientDelete}>Yes</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={openConfirm}
+        onClose={handleCloseConfirmDelete}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          Confirm Client Approve
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to approve the client{" "}
+            <strong>{clientDetails?.name}</strong>?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseConfirmApprove}>
+            No
+          </Button>
+          <Button onClick={handleClientApprove}>Yes</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={openConfirm}
+        onClose={handleCloseConfirmDelete}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          Confirm Approve Project
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to approve the project{" "}
+            <strong>{clientDetails?.name}</strong>?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseConfirmApproveProject}>
+            No
+          </Button>
+          <Button onClick={handleProjectApprove}>Yes</Button>
         </DialogActions>
       </Dialog>
     </ThemeProvider>

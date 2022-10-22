@@ -32,6 +32,15 @@ export default function ClientsReducer(state = clientsState, action) {
         ...state.slice(0, index), // everything before current item
         ...state.slice(index + 1), // everything after current item
       ];
+    // APPROVE
+    case actionTypes.APPROVE_CLIENTS:
+      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+
+      return [
+        ...state.slice(0, index), // everything before current item
+        action.clientDetails,
+        ...state.slice(index + 1), // everything after current item
+      ];
     default:
       return state;
   }

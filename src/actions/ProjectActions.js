@@ -3,6 +3,7 @@ export const actionTypes = {
   ADD_PROJECT: "ADD_PROJECT",
   EDIT_PROJECT: "EDIT_PROJECT",
   DELETE_PROJECT: "DELETE_PROJECT",
+  APPROVE_PROJECT: "APPROVE_PROJECT",
 };
 
 export function setProjects(projects) {
@@ -19,4 +20,8 @@ export function editProjectAction(projectDetails) {
 
 export function deleteProjectAction(projectDetails) {
   return { type: actionTypes.DELETE_PROJECT, projectDetails };
+}
+
+export function approveProjecAction(clientDetails) {
+  return { type: actionTypes.APPROVE_PROJECT, clientDetails };
 }
