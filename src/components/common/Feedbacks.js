@@ -46,7 +46,16 @@ function Feedbacks() {
 
   return (
     <Box sx={{ maxWidth: "100%", flexGrow: 1 }} align="center">
-      <Typography variant="h2">Testimonials</Typography>
+      <Typography
+        variant="h2"
+        sx={{
+          fontWeight: "bold",
+          color: "#82C8E1 ",
+          fontFamily: "Poppins, sans-serif;",
+        }}
+      >
+        Client Testimonials
+      </Typography>
       <Box sx={{ maxWidth: 400, flexGrow: 1 }} align="center">
         <Paper
           square
