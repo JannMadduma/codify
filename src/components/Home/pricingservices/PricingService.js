@@ -25,34 +25,16 @@ export default function PricingService() {
           }}
         >
           <Container maxWidth="md">
-            <Typography
-              component="h4"
-              variant="h5"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              text here
+          <Typography variant="h5" sx={{fontWeight: 'bold', fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+              Provision is the key.
             </Typography>
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Header text goes here
+            <Typography variant="h2" sx={{fontWeight: 'bold', color: 'rgba(50, 180, 235, 0.8)', fontFamily: 'Poppins, sans-serif;', textAlign: 'center', marginBottom: 5}}>
+              Our Services
             </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              nec odio. Praesent libero. Sed cursus ante dapibus diam.
+            <Typography variant="h6" sx={{fontWeight: 'medium', marginBottom: 5, fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+              Below are the services we provide for our clients.
             </Typography>
-            <Stack
+            {/* <Stack
               sx={{ pt: 4 }}
               direction="row"
               spacing={2}
@@ -60,17 +42,18 @@ export default function PricingService() {
             >
               <Button variant="contained">Text Here</Button>
               <Button variant="outlined">Text Here</Button>
-            </Stack>
+            </Stack> */}
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} md={3}>
+        <Container sx={{ py: 7, }} maxWidth="md">
+          <Grid container spacing={12}>
+            <Grid container spacing={5} item xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: "50%",
                   display: "flex",
                   flexDirection: "column",
+                  boxShadow: 0
                 }}
               >
                 <CardMedia
@@ -83,21 +66,21 @@ export default function PricingService() {
                 />
               </Card>
               <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
+              <Typography variant="h6" sx={{fontWeight: 'bold', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center', color: 'rgba(50, 180, 235, 0.8)'}}>
                   Website Making
                 </Typography>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                <Typography variant="h7" sx={{fontWeight: 'medium', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+                  We offer various website projects for you! We're just one contact away!
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid container spacing={5} item xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: "50%",
                   display: "flex",
                   flexDirection: "column",
+                  boxShadow: 0
                 }}
               >
                 <CardMedia
@@ -110,21 +93,21 @@ export default function PricingService() {
                 />
               </Card>
               <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
+              <Typography variant="h6" sx={{fontWeight: 'bold', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center', color: 'rgba(50, 180, 235, 0.8)'}}>
                   Website Maintenance
                 </Typography>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                <Typography variant="h7" sx={{fontWeight: 'medium', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+                  Want us to continue with the service for your website? Sure!
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid container spacing={5} item xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: "50%",
                   display: "flex",
                   flexDirection: "column",
+                  boxShadow: 0
                 }}
               >
                 <CardMedia
@@ -137,21 +120,21 @@ export default function PricingService() {
                 />
               </Card>
               <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
+              <Typography variant="h6" sx={{fontWeight: 'bold', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center', color: 'rgba(50, 180, 235, 0.8)'}}>
                   Custom Web Service
                 </Typography>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                <Typography variant="h7" sx={{fontWeight: 'medium', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+                  You want a custom Web Service but don't know where to seek help? We got you here at Codify!
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid container spacing={5} item xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: "50%",
                   display: "flex",
                   flexDirection: "column",
+                  boxShadow: 0
                 }}
               >
                 <CardMedia
@@ -164,12 +147,11 @@ export default function PricingService() {
                 />
               </Card>
               <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
+              <Typography variant="h6" sx={{fontWeight: 'bold', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center', color: 'rgba(50, 180, 235, 0.8)'}}>
                   Website For Sale
                 </Typography>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                <Typography variant="h7" sx={{fontWeight: 'medium', marginBottom: 2, fontFamily: 'Poppins, sans-serif;', textAlign: 'center'}}>
+                  Want to sell your website? We're more than happy to be of service here at Codify! 
                 </Typography>
               </Box>
             </Grid>
