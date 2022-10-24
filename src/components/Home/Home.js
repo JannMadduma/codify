@@ -14,7 +14,7 @@ import ContactUs from "./heropage/ContactUs";
 
 const Home = ({}) => {
   return (
-    <div>
+    <div id="home">
       <Header />
       <Hero />
       <Framework />
