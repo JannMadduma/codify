@@ -19,7 +19,7 @@ const Item = styled(Box)(({ theme }) => ({
 
 function FormRow() {
   return (
-    <div id="portfolio">
+    <React.Fragment>
       <Grid item xs={3}>
         <Item>
           <JannProjects />
@@ -35,7 +35,17 @@ function FormRow() {
           <RechProjects />
         </Item>
       </Grid>
-    </div>
+      <Grid item xs={3}>
+        <Item>
+          <RusselProjects />
+        </Item>
+      </Grid>
+      <Grid item xs={3}>
+        <Item>
+          <TonProjects />
+        </Item>
+      </Grid>
+    </React.Fragment>
   );
 }
 
@@ -46,27 +56,15 @@ export default function Portfolio() {
         sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
         align="center"
       >
-        <Typography variant="h4">text here</Typography>
-        <Typography variant="h2">header text goes here</Typography>
+        <Typography variant="h4">OUR WORK</Typography>
+        <Typography variant="h2">OUR PORTFOLIO</Typography>
         <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-          odio. Praesent libero. Sed cursus ante dapibus diam.
+          This is a description of the portfolio. This is a description of the
+          portfolio. This is a description of the portfolio.
         </Typography>
       </Box>
       <Box>
         <Grid container spacing={5}>
-          <Grid container item spacing={5}>
-            <FormRow />
-          </Grid>
-          <Grid container item spacing={5}>
-            <FormRow />
-          </Grid>
-          <Grid container item spacing={5}>
-            <FormRow />
-          </Grid>
-          <Grid container item spacing={5}>
-            <FormRow />
-          </Grid>
           <Grid container item spacing={5}>
             <FormRow />
           </Grid>
