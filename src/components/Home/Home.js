@@ -19,14 +19,19 @@ const Home = ({}) => {
       <Hero />
       <Framework />
       <Technology />
+
+      {/* ton  */}
       <Portfolio />
-      <PricingService />
-      <AboutUs />
-      <Framework />
-      <Goals />
-      <Missionvision />
       <Feedbacks />
       <ContactUs />
+      <Framework />
+
+      {/* russ */}
+      <PricingService />
+      <AboutUs />
+      <Goals />
+      <Missionvision />
+
       <Footer />
     </div>
   );
