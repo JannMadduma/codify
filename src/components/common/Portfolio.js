@@ -57,7 +57,9 @@ export default function Portfolio() {
         align="center"
       >
         <Typography variant="h4">OUR WORK</Typography>
-        <Typography variant="h2">OUR PORTFOLIO</Typography>
+        <Typography variant="h2" sx={{ color: "#82C8E1" }}>
+          Our Portfolio
+        </Typography>
         <Typography>
           This is a description of the portfolio. This is a description of the
           portfolio. This is a description of the portfolio.
