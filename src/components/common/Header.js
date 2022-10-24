@@ -17,9 +17,9 @@ import { Container } from "@mui/material";
 const drawerWidth = 240;
 const navItems = [
   { label: "Home", id: "#home" },
-  { label: "Portfolio", id: "#porfolio" },
-  { label: "Pricing", id: "#porfolio" },
-  { label: "Contact Us", id: "#contactUs" },
+  { label: "Portfolio", id: "#portfolio" },
+  { label: "Pricing", id: "#pricing" },
+  { label: "About Us", id: "#aboutUs" },
 ];
 
 function Header(props) {
@@ -52,8 +52,12 @@ function Header(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" position="fixed">
+    <Box>
+      <AppBar
+        component="nav"
+        position="fixed"
+        sx={{ height: "80px", display: "grid", alignContent: "center" }}
+      >
         <Container>
           <Toolbar>
             <IconButton
@@ -65,12 +69,13 @@ function Header(props) {
             >
               <MenuIcon />
             </IconButton>
+            <Img></Img>
             <Typography
-              variant="h6"
+              variant="h3"
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              LOGO
+              codifyph
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (

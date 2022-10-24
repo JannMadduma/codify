@@ -19,7 +19,7 @@ const Item = styled(Box)(({ theme }) => ({
 
 function FormRow() {
   return (
-    <div id="portfolio">
+    <div>
       <Grid item xs={3}>
         <Item>
           <JannProjects />
@@ -41,7 +41,7 @@ function FormRow() {
 
 export default function Portfolio() {
   return (
-    <Box style={{ padding: "5%" }}>
+    <Box style={{ padding: "5%" }} id="portfolio">
       <Box
         sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
         align="center"
