@@ -1,4 +1,4 @@
-import { Container } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import React from "react";
 import Typography from '@mui/material/Typography';
 
@@ -11,7 +11,10 @@ export default function Goals(){
             </Container>
 
             <Container maxWidth="lg" sx={{ margin: 0, padding: 0, textAlign: "left"}}>
-            <Typography variant="h1">Our Goal</Typography>
+            <Typography variant="h2" sx={{fontWeight: 'bold', color: 'rgba(50, 180, 235, 0.8)', fontFamily: 'Poppins, sans-serif;'}}>Our Goal</Typography>
+
+            <Box className="container mb-5 mx-0" style={{ borderBottom: '3px solid rgba(135, 180, 235, 0.8)', borderRadius: 25, width: 380, marginTop: 10, marginBottom: 30 }}></Box>
+
             <Typography variant="h6" sx={{fontWeight: 'medium'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolores dolore distinctio rem vel non animi ut possimus quibusdam, numquam veritatis quod atque dolorum quos eum fugit in maxime quo.</Typography>
             <Typography variant="h6" sx={{fontWeight: 'light', fontSize: 14, marginTop: 4}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolores dolore distinctio rem vel non animi ut possimus quibusdam, numquam veritatis quod atque dolorum quos eum fugit in maxime quo.</Typography>
             </Container>
