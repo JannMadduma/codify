@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Container } from "@mui/material";
+import { Avatar, Container } from "@mui/material";
 
 const drawerWidth = 240;
 const navItems = [
@@ -32,11 +32,11 @@ function Header(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6" sx={{ my: 2, textDecorationColor: "#82C8E1" }}>
         codifyph
       </Typography>
       <Divider />
-      <List>
+      <List sx={{ textDecorationColor: "#82C8E1", fontWeight: "bold" }}>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }} href={item.id}>
@@ -56,7 +56,13 @@ function Header(props) {
       <AppBar
         component="nav"
         position="fixed"
-        sx={{ height: "80px", display: "grid", alignContent: "center" }}
+        sx={{
+          height: "80px",
+          display: "grid",
+          alignContent: "center",
+          backgroundColor: "white",
+          boxShadow: "none",
+        }}
       >
         <Container>
           <Toolbar>
@@ -69,26 +75,36 @@ function Header(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Img></Img>
-            <Typography
-              variant="h3"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "block" },
+                paddingLeft: "50px",
+              }}
             >
-              codifyph
-            </Typography>
+              <img
+                src="/img/herologo.png"
+                style={{ height: "80px", width: "200px" }}
+              />
+            </Box>
+
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }} href={item.id}>
+                <Button
+                  key={item}
+                  variant="h3"
+                  sx={{ color: "#353C42", fontWeight: "bold" }}
+                  href={item.id}
+                >
                   {item.label}
                 </Button>
               ))}
             </Box>
             <Button
-              className="contactUsButton"
-              color="inherit"
+              className="Button"
               variant="contained"
-              style={{ color: "#3b5998" }}
+              style={{ backgroundColor: "#82C8E1", boxShadow: "none" }}
             >
               CONTACT US
             </Button>

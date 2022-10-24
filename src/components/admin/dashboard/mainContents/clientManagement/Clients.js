@@ -54,44 +54,14 @@ const mdTheme = createTheme();
 
 export default function Clients({ isPending }) {
   const dispatch = useDispatch();
-  const [searchQuery, setSearchQuery] = React.useState([]);
+  
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  const SearchBar = ({ setSearchQuery }) => (
-    <form>
-      <TextField
-        id="search-bar"
-        className="text"
-        onChange={(e) => {
-          setSearchQuery(e.target.value);
-        }}
-        label="Enter name"
-        variant="outlined"
-        placeholder="Search..."
-        size="small"
-      />
-      <IconButton type="submit" aria-label="search">
-        <SearchIcon style={{ fill: "blue" }} />
-      </IconButton>
-    </form>
-  );
 
-  const filterData = (query, clients) => {
-    if (!query) {
-      return clients;
-    } else {
-      return clients.filter(
-        ({ name, email }) =>
-          name?.toLowerCase().includes(query) ||
-          email?.toLowerCase().includes(query)
-      );
-    }
-  };
-  const dataFiltered = filterData(searchQuery, clients);
 
   const handleInputChange = (e) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
@@ -258,42 +228,7 @@ export default function Clients({ isPending }) {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell>
-                          <Input>
-                            <div
-                              sx={{
-                                display: "flex",
-                                alignSelf: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                padding: 20,
-                              }}
-                            >
-                              <SearchBar
-                                searchQuery={searchQuery}
-                                setSearchQuery={setSearchQuery}
-                              />
-                              <div style={{ padding: 3 }}>
-                                {dataFiltered.map((clients) => (
-                                  <div
-                                    className="text"
-                                    style={{
-                                      padding: 5,
-                                      justifyContent: "normal",
-                                      fontSize: 20,
-                                      color: "blue",
-                                      margin: 1,
-                                      width: "250px",
-                                      BorderColor: "green",
-                                      borderWidth: "10px",
-                                    }}
-                                    key={clients.id}
-                                  >
-                                    {clients}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </Input>
+                          
                         </TableCell>
                         <TableCell align="center">
                           <Button onClick={() => handleClickOpen({})}>

@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, Divider, ThemeProvider } from "@mui/material";
 
 const theme = createTheme();
 
@@ -28,23 +28,33 @@ export default function Hero() {
           >
             <Container maxWidth="md">
               <Typography
-                component="h4"
-                variant="h5"
+                component="h3"
+                variant="h3"
                 align="left"
                 color="text.primary"
                 gutterBottom
+                sx={{
+                  color: "#353C42",
+                }}
               >
-                text here
+                website
               </Typography>
               <Typography
-                component="h1"
+                component="h2"
                 variant="h2"
                 align="left"
                 color="text.primary"
                 gutterBottom
+                sx={{
+                  fontSize: "80px",
+                  color: "#82C8E1",
+                }}
               >
-                Header text goes here
+                DESIGN
+                <br /> & CODES
               </Typography>
+              <Divider />
+              <br />
               <Typography
                 variant="h5"
                 align="left"
