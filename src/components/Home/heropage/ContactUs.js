@@ -20,6 +20,7 @@ export default function ContactUs() {
             pt: 8,
             pb: 6,
           }}
+          id="contactUs"
         >
           <Container maxWidth="md">
             <Typography

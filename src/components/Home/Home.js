@@ -14,19 +14,24 @@ import ContactUs from "./heropage/ContactUs";
 
 const Home = ({}) => {
   return (
-    <div>
+    <div id="home">
       <Header />
       <Hero />
       <Framework />
       <Technology />
+
+      {/* ton  */}
       <Portfolio />
-      <PricingService />
-      <AboutUs />
-      <Framework />
-      <Goals />
-      <Missionvision />
       <Feedbacks />
       <ContactUs />
+      <Framework />
+
+      {/* russ */}
+      <PricingService />
+      <AboutUs />
+      <Goals />
+      <Missionvision />
+
       <Footer />
     </div>
   );
