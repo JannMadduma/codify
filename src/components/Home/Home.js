@@ -14,7 +14,7 @@ import ContactUs from "./heropage/ContactUs";
 
 const Home = ({}) => {
   return (
-    <div id="home">
+    <div id="home" style={{ height: "100%" }}>
       <Header />
       <Hero />
       <Framework />
