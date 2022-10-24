@@ -80,7 +80,7 @@ function Header(props) {
               sx={{
                 flexGrow: 1,
                 display: { xs: "none", sm: "block" },
-                paddingLeft: "50px",
+                // paddingLeft: "50px",
               }}
             >
               <img

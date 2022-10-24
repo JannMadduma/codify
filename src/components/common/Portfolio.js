@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import JannProjects from "../Home/portfolio/websites/JannProjects";
 import PhillipProjects from "../Home/portfolio/websites/PhillipProjects";
@@ -51,43 +51,46 @@ function FormRow() {
 
 export default function Portfolio() {
   return (
-    <Box style={{ padding: "5%" }} id="portfolio">
-      <Box
-        sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
-        align="center"
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "bold",
-            fontFamily: "Poppins, sans-serif;",
-          }}
+    <Container>
+      <Box style={{ padding: "5%" }} id="portfolio">
+        <Box
+          sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
+          align="center"
         >
-          OUR WORK
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{
-            fontWeight: "bold",
-            color: "#82C8E1 ",
-            fontFamily: "Poppins, sans-serif;",
-          }}
-        >
-          Our Portfolio
-        </Typography>
-        <Typography sx={{ mx: "auto", width: 900 }}>
-          This is a description of the portfolio. This is a description of the
-          portfolio. This is a description of the portfolio. This is a
-          description of the portfolio. This is a description of the portfolio.
-        </Typography>
-      </Box>
-      <Box>
-        <Grid container spacing={5}>
-          <Grid container item spacing={5}>
-            <FormRow />
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
+            OUR WORK
+          </Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: "bold",
+              color: "#82C8E1 ",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
+            Our Portfolio
+          </Typography>
+          <Typography sx={{ mx: "auto", width: 900 }}>
+            This is a description of the portfolio. This is a description of the
+            portfolio. This is a description of the portfolio. This is a
+            description of the portfolio. This is a description of the
+            portfolio.
+          </Typography>
+        </Box>
+        <Box>
+          <Grid container spacing={5}>
+            <Grid container item spacing={5}>
+              <FormRow />
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }
