@@ -11,7 +11,7 @@ export default function AboutUs(){
 
             <Box className="container mb-5 mx-0" style={{ borderBottom: '3px solid rgba(135, 180, 235, 0.8)', borderRadius: 25, width: 380, marginTop: 10, marginBottom: 30 }}></Box>
 
-            <Typography variant="h6" sx={{fontWeight: 'medium', marginBottom: 5, fontFamily: 'Poppins, sans-serif;'}}>We are visionary developers that seeks improvement to the current innovations we are using. We are passionate and determined to excel and give our best in every challenge we face. We are, Codify.</Typography>
+            <Typography variant="h6" sx={{fontWeight: 'bold', marginBottom: 5, fontFamily: 'Poppins, sans-serif;'}}>We are visionary developers that seeks improvement to the current innovations we are using. We are passionate and determined to excel and give our best in every challenge we face. We are, Codify.</Typography>
             
             <Box className="container mb-5 mx-0" style={{ borderBottom: '1px solid rgba(135, 180, 235, 0.8)', borderRadius: 25, width: 380}}></Box>
 
