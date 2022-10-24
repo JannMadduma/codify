@@ -1,6 +1,7 @@
-import { Container } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import React from "react";
 import Typography from '@mui/material/Typography';
+// import './App.css';
 
 
 
@@ -10,7 +11,7 @@ export default function Missionvision(){
     <Container sx={{display: "flex", flexDirection: "column", height: 780, marginY: 15}}>
         <Container sx={{display: "flex", height: 780}}>
             <Container maxWidth="lg" >
-            <img style={{height: 300, width: 500}} src="https://img.freepik.com/free-vector/software-engineering-background_1284-3394.jpg?w=740&t=st=1666070538~exp=1666071138~hmac=171d681ae455912d26bb39680c2fbda7d53bbfb08151370d231b1ff71f809fab"/>
+            <img style={{height: 300, width: 500}} src="../images/10.png"/>
             </Container>
             <Container maxWidth="lg" >
                 <Container maxWidth="lg" sx={{flexDirection: "column"}}>
@@ -29,7 +30,10 @@ export default function Missionvision(){
                 </Container>
             </Container>
             <Container maxWidth="lg">
-            <img style={{height: 300, width: 500}} src="https://img.freepik.com/free-vector/software-engineering-background_1284-3394.jpg?w=740&t=st=1666070538~exp=1666071138~hmac=171d681ae455912d26bb39680c2fbda7d53bbfb08151370d231b1ff71f809fab"/>
+            <img style={{height: 300, width: 500}} src="../images/5.png">
+
+              
+            </img>
             </Container>
         </Container>
     </Container>
