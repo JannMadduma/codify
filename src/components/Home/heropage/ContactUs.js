@@ -24,11 +24,14 @@ export default function ContactUs() {
         >
           <Container maxWidth="md">
             <Typography
-              component="h4"
               variant="h5"
               align="center"
               color="text.primary"
               gutterBottom
+              sx={{
+                fontWeight: "bold",
+                fontFamily: "Poppins, sans-serif;",
+              }}
             >
               CONTACT US
             </Typography>
@@ -38,27 +41,58 @@ export default function ContactUs() {
               align="center"
               color="text.primary"
               gutterBottom
+              sx={{
+                fontWeight: "bold",
+                color: "#82C8E1 ",
+                fontFamily: "Poppins, sans-serif;",
+              }}
             >
-              LET'S COLLABORATE
+              Let's Colaborate
             </Typography>
             <Typography
-              variant="h5"
               align="center"
-              color="text.secondary"
               paragraph
+              sx={{
+                fontWeight: "bold",
+                fontFamily: "Poppins, sans-serif;",
+              }}
             >
               Need something built for your business?
               <br />
               Talk to us about it.
             </Typography>
             <Stack
-              sx={{ pt: 4 }}
+              sx={{ pt: 4, mx: 5 }}
               direction="row"
-              spacing={2}
+              spacing={5}
               justifyContent="center"
             >
-              <Button variant="contained">Text Here</Button>
-              <Button variant="outlined">Text Here</Button>
+              <Button
+                variant="contained"
+                sx={{
+                  fontWeight: "bold",
+                  fontFamily: "Poppins, sans-serif;",
+                  bgcolor: "#82C8E1 ",
+                  px: 3,
+                  py: 1,
+                  mx: 5,
+                }}
+              >
+                Learn more {">"}
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  fontWeight: "bold",
+                  fontFamily: "Poppins, sans-serif;",
+                  bgcolor: "#82C8E1 ",
+                  px: 3,
+                  py: 1,
+                  mx: 5,
+                }}
+              >
+                Inquire now
+              </Button>
             </Stack>
           </Container>
         </Box>

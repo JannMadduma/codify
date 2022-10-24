@@ -5,18 +5,29 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Box } from "@mui/system";
 
 export default function JannProjects() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 " }}>
       <CardMedia
         component="img"
         alt="PICTURE"
         height="140"
-        image="/logo192.png"
+        image="/estate.jpg"
+        sx={{ p: 2 }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" align="left">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          align="left"
+          sx={{
+            fontWeight: "bold",
+            fontFamily: "Poppins, sans-serif;",
+          }}
+        >
           Jann Frauline
         </Typography>
         <Typography variant="body2" color="text.secondary" align="left">

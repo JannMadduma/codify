@@ -14,20 +14,16 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
+    imgPath: "test.jpg",
   },
   {
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
+    imgPath: "test.jpg",
   },
   {
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
+    imgPath: "test.jpg",
   },
   {
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
+    imgPath: "test.jpg",
   },
 ];
 
@@ -50,7 +46,16 @@ function Feedbacks() {
 
   return (
     <Box sx={{ maxWidth: "100%", flexGrow: 1 }} align="center">
-      <Typography variant="h2">Testimonials</Typography>
+      <Typography
+        variant="h2"
+        sx={{
+          fontWeight: "bold",
+          color: "#82C8E1 ",
+          fontFamily: "Poppins, sans-serif;",
+        }}
+      >
+        Client Testimonials
+      </Typography>
       <Box sx={{ maxWidth: 400, flexGrow: 1 }} align="center">
         <Paper
           square

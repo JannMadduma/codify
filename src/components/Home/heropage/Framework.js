@@ -4,11 +4,12 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CardContent } from "@mui/material";
 
 const theme = createTheme();
 
@@ -29,19 +30,26 @@ export default function Framework() {
               component="h4"
               variant="h5"
               align="center"
-              color="text.primary"
               gutterBottom
+              sx={{
+                fontWeight: "bold",
+                fontFamily: "Poppins, sans-serif;",
+              }}
             >
-              text here
+              THE FRAMEWORK
             </Typography>
             <Typography
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
               gutterBottom
+              sx={{
+                fontWeight: "bold",
+                color: "#82C8E1 ",
+                fontFamily: "Poppins, sans-serif;",
+              }}
             >
-              Header text goes here
+              Building a Great Product
             </Typography>
             <Typography
               variant="h5"
@@ -54,89 +62,92 @@ export default function Framework() {
             </Typography>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 3 }} maxWidth="md">
           <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  height: "50%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardMedia
-                  component="img"
+            {/* -----------------CARD 1 ---------------- */}
+            <Card sx={{ maxWidth: 250, m: 2 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/rightTeam.jpg"
+                alt="picture"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
                   sx={{
-                    maxHeight: "100%",
+                    fontWeight: "bold",
+                    color: "#82C8E1 ",
+                    fontFamily: "Poppins, sans-serif;",
                   }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                />
-              </Card>
-              <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
+                >
                   RIGHT TEAM
                 </Typography>
-                <Typography>
+                <Typography variant="body2" color="text.secondary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                  diam.
                 </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  height: "50%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardMedia
-                  component="img"
+              </CardContent>
+            </Card>
+            {/* -----------------CARD 2----------------- */}
+            <Card sx={{ maxWidth: 250, m: 2 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/rightProccess.jpg"
+                alt="picture"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
                   sx={{
-                    maxHeight: "100%",
+                    fontWeight: "bold",
+                    color: "#82C8E1 ",
+                    fontFamily: "Poppins, sans-serif;",
                   }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                />
-              </Card>
-              <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
-                  RIGHT TEAM
+                >
+                  RIGHT PROCESS
                 </Typography>
-                <Typography>
+                <Typography variant="body2" color="text.secondary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                  diam.
                 </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  height: "50%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardMedia
-                  component="img"
+              </CardContent>
+            </Card>
+            {/*------------------ Card 3 --------------------*/}
+            <Card sx={{ maxWidth: 250, m: 2 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/rightTech.jpg"
+                alt="picture"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
                   sx={{
-                    maxHeight: "100%",
+                    fontWeight: "bold",
+                    color: "#82C8E1 ",
+                    fontFamily: "Poppins, sans-serif;",
                   }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                />
-              </Card>
-              <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
-                <Typography gutterBottom variant="h5" component="h2">
-                  RIGHT TEAM
+                >
+                  RIGHT TECHNOLOGY
                 </Typography>
-                <Typography>
+                <Typography variant="body2" color="text.secondary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec odio.
+                  Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                  diam.
                 </Typography>
-              </Box>
-            </Grid>
+              </CardContent>
+            </Card>
           </Grid>
         </Container>
       </main>

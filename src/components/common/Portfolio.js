@@ -30,11 +30,11 @@ function FormRow() {
           <PhillipProjects />
         </Item>
       </Grid>
-      <Grid item xs={3}>
+      {/* <Grid item xs={3}>
         <Item>
           <RechProjects />
         </Item>
-      </Grid>
+      </Grid> */}
       <Grid item xs={3}>
         <Item>
           <RusselProjects />
@@ -56,11 +56,29 @@ export default function Portfolio() {
         sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
         align="center"
       >
-        <Typography variant="h4">OUR WORK</Typography>
-        <Typography variant="h2">OUR PORTFOLIO</Typography>
-        <Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            fontFamily: "Poppins, sans-serif;",
+          }}
+        >
+          OUR WORK
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: "bold",
+            color: "#82C8E1 ",
+            fontFamily: "Poppins, sans-serif;",
+          }}
+        >
+          Our Portfolio
+        </Typography>
+        <Typography sx={{ mx: "auto", width: 900 }}>
           This is a description of the portfolio. This is a description of the
-          portfolio. This is a description of the portfolio.
+          portfolio. This is a description of the portfolio. This is a
+          description of the portfolio. This is a description of the portfolio.
         </Typography>
       </Box>
       <Box>

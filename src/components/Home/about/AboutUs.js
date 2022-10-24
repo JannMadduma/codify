@@ -9,7 +9,14 @@ export default function AboutUs() {
         sx={{ display: "flex", alignItems: "center", height: 780, marginY: 15 }}
       >
         <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
-          <Typography variant="h1" sx={{ color: "rgba(50, 180, 235, 0.8)" }}>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: "bold",
+              color: "rgba(50, 180, 235, 0.8)",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
             About Us
           </Typography>
 
@@ -26,7 +33,11 @@ export default function AboutUs() {
 
           <Typography
             variant="h6"
-            sx={{ fontWeight: "medium", marginBottom: 5 }}
+            sx={{
+              fontWeight: "bold",
+              marginBottom: 5,
+              fontFamily: "Poppins, sans-serif;",
+            }}
           >
             We are visionary developers that seeks improvement to the current
             innovations we are using. We are passionate and determined to excel
@@ -36,16 +47,21 @@ export default function AboutUs() {
           <Box
             className="container mb-5 mx-0"
             style={{
-              borderBottom: "2px solid rgba(135, 180, 235, 0.8)",
+              borderBottom: "1px solid rgba(135, 180, 235, 0.8)",
               borderRadius: 25,
               width: 380,
-              marginTop: 10,
             }}
           ></Box>
 
           <Typography
             variant="h6"
-            sx={{ fontWeight: "light", fontSize: 14, marginTop: 0.5 }}
+            sx={{
+              fontStyle: "italic",
+              fontWeight: "light",
+              fontSize: 14,
+              marginTop: 0.5,
+              fontFamily: "Poppins, sans-serif;",
+            }}
           >
             Know more about us on our portfolios!
           </Typography>

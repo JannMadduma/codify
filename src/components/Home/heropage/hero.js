@@ -32,9 +32,10 @@ export default function Hero() {
                 variant="h3"
                 align="left"
                 color="text.primary"
-                gutterBottom
                 sx={{
                   color: "#353C42",
+
+                  fontWeight: 500,
                 }}
               >
                 website
@@ -48,21 +49,22 @@ export default function Hero() {
                 sx={{
                   fontSize: "80px",
                   color: "#82C8E1",
+                  fontWeight: "bold",
                 }}
               >
                 DESIGN
                 <br /> & CODES
               </Typography>
-              <Divider />
+              <Divider color="#02B4FE" variant="fullWidth" />
               <br />
               <Typography
-                variant="h5"
+                variant="h6"
                 align="left"
                 color="text.secondary"
                 paragraph
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                Allow us in advancing your business and feel a significant
+                change in your business.
               </Typography>
               <Stack
                 sx={{ pt: 4 }}
@@ -70,8 +72,20 @@ export default function Hero() {
                 spacing={2}
                 justifyContent="left"
               >
-                <Button variant="contained">Text Here</Button>
-                <Button variant="outlined">Text Here</Button>
+                <Button
+                  className="Button"
+                  variant="contained"
+                  style={{ backgroundColor: "#82C8E1", boxShadow: "none" }}
+                >
+                  Text Here
+                </Button>
+                <Button
+                  className="Button"
+                  variant="contained"
+                  style={{ backgroundColor: "#82C8E1", boxShadow: "none" }}
+                >
+                  Text Here
+                </Button>
               </Stack>
             </Container>
           </Box>
