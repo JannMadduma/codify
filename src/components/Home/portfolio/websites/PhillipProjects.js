@@ -27,7 +27,7 @@ export default function PhillipProjects() {
             fontFamily: "Poppins, sans-serif;",
           }}
         >
-          Phillip Mah Men
+          Phillip
         </Typography>
         <Typography variant="body2" color="text.secondary" align="left">
           Web Application

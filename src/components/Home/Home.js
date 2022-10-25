@@ -11,6 +11,8 @@ import AboutUs from "./about/AboutUs";
 import Goals from "./about/goalsObj";
 import Missionvision from "./about/missionvision";
 import ContactUs from "./heropage/ContactUs";
+import Team from "./heropage/Team";
+import Pricing from "./heropage/Pricing";
 
 const Home = ({}) => {
   return (
@@ -24,7 +26,8 @@ const Home = ({}) => {
       <Portfolio />
       <Feedbacks />
       <ContactUs />
-      <Framework />
+      <Team />
+      <Pricing />
 
       {/* russ */}
       <PricingService />
