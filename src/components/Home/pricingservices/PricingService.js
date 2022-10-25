@@ -33,13 +33,13 @@ export default function PricingService() {
                 textAlign: "center",
               }}
             >
-              Provision is the key.
+              WORK WITH US
             </Typography>
             <Typography
               variant="h2"
               sx={{
                 fontWeight: "bold",
-                color: "rgba(50, 180, 235, 0.8)",
+                color: "#82C8E1 ",
                 fontFamily: "Poppins, sans-serif;",
                 textAlign: "center",
                 marginBottom: 5,

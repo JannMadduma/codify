@@ -6,12 +6,27 @@ export default function Goals(){
     return(
         <>
         <Container sx={{display: "flex", alignItems: "center", height: 780, marginY: 15}}>
-            <Container maxWidth={false} sx={{ maxWidth: '800px' }}>
+            <Container maxWidth={false} 
+            sx={{ 
+                maxWidth: '800px'
+                }}>
             <img style={{width:550}} src="../images/7.svg" alt="" srcset="" />
             </Container>
 
-            <Container maxWidth="lg" sx={{ margin: 0, padding: 0, textAlign: "left"}}>
-            <Typography variant="h2" sx={{fontWeight: 'bold', color: 'rgba(50, 180, 235, 0.8)', fontFamily: 'Poppins, sans-serif;'}}>Our Goal</Typography>
+            <Container maxWidth="lg" 
+            sx={{ margin: 0, 
+                  padding: 0, 
+                  textAlign: "left"
+                  }}>
+
+            <Typography variant="h2" 
+            sx={{ fontWeight: 'bold', 
+                  color: "#82C8E1 ", 
+                  fontFamily: 'Poppins, sans-serif;'
+                  }}>
+                  
+                  Our Goal
+                  </Typography>
 
             <Box className="container mb-5 mx-0" style={{ borderBottom: '3px solid rgba(135, 180, 235, 0.8)', borderRadius: 25, width: 470, marginTop: 10, marginBottom: 30 }}></Box>
 
