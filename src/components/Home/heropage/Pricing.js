@@ -24,6 +24,7 @@ export default function Pricing() {
           pt: 8,
           pb: 6,
         }}
+        id="pricing"
       >
         <Container maxWidth="md">
           {/* <Typography

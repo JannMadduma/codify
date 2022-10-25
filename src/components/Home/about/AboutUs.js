@@ -16,6 +16,7 @@ export default function AboutUs() {
           backgroundColor: "white",
           height: "100%",
         }}
+        id="aboutUs"
       >
         <Container maxWidth="lg" sx={{ height: "100%" }}>
           <Grid

@@ -11,6 +11,9 @@ import Missionvision from "./about/missionvision";
 import Pricing from "./heropage/Pricing";
 import FAQ from "./heropage/FAQ";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Team from "./heropage/Team";
+import Feedbacks from "../common/Feedbacks";
+import ContactUs from "./heropage/ContactUs";
 
 let themeInit = createTheme({});
 const theme = createTheme(themeInit, {
@@ -42,7 +45,10 @@ const Home = ({}) => {
         <AboutUs />
         <Framework />
         <Missionvision />
-
+        <goalsObj />
+        <Feedbacks />
+        <Team />
+        <ContactUs />
         <Footer />
       </div>
     </ThemeProvider>
