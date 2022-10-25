@@ -19,22 +19,18 @@ const Home = ({}) => {
     <div id="home" style={{ height: "100%" }}>
       <Header />
       <Hero />
-      <Framework />
-      <Technology />
-
-      {/* ton  */}
       <Portfolio />
-      <Feedbacks />
-      <ContactUs />
-      <Team />
-      <Pricing />
-
-      {/* russ */}
       <PricingService />
+      {/* pricing */}
+      <Technology />
+      {/* FAQ */}
       <AboutUs />
-      <Goals />
+      <Framework />
       <Missionvision />
-
+      <Goals />
+      <Feedbacks />
+      {/* core team */}
+      <ContactUs />
       <Footer />
     </div>
   );
