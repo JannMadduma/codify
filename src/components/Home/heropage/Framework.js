@@ -13,6 +13,27 @@ import { CardContent } from "@mui/material";
 
 const theme = createTheme();
 
+const framework = [
+  {
+    img: "https://img.icons8.com/windows/512/000000/dev.png",
+    title: "RIGHT TEAM",
+    description:
+      "We offer various website projects for you! We're just one contact away!",
+  },
+  {
+    img: "https://img.icons8.com/ios/100/000000/process.png",
+    title: "RIGHT PROCESS",
+    description:
+      "We offer various website projects for you! We're just one contact away!",
+  },
+  {
+    img: "https://img.icons8.com/ios/500/000000/ableton.png",
+    title: "RIGHT TECHNOLOGY",
+    description:
+      "We offer various website projects for you! We're just one contact away!",
+  },
+];
+
 export default function Framework() {
   return (
     <ThemeProvider theme={theme}>
@@ -62,95 +83,43 @@ export default function Framework() {
 
           <Grid container spacing={4} pt={4}>
             {/* -----------------CARD 1 ---------------- */}
-            <Grid item xs={4}>
-              <Card sx={{ height: "100%" }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="/rightTeam.jpg"
-                  alt="picture"
+            {framework.map((item) => (
+              <Grid item xs={4} key={item}>
+                <img
+                  src={item.img}
+                  style={{
+                    width: "100%",
+                    padding: "0 80px",
+                  }}
                 />
-                <CardContent>
+                <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
                   <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
+                    variant="h6"
+                    key={item}
                     sx={{
                       fontWeight: "bold",
-                      color: "#82C8E1 ",
+                      marginBottom: 2,
                       fontFamily: "Poppins, sans-serif;",
+                      textAlign: "center",
+                      color: "rgba(50, 180, 235, 0.8)",
                     }}
                   >
-                    RIGHT TEAM
+                    {item.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer nec odio. Praesent libero. Sed cursus ante dapibus
-                    diam.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            {/* -----------------CARD 2----------------- */}
-            <Grid item xs={4}>
-              <Card sx={{ height: "100%" }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="/rightProccess.jpg"
-                  alt="picture"
-                />
-                <CardContent>
                   <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
+                    variant="h7"
                     sx={{
-                      fontWeight: "bold",
-                      color: "#82C8E1 ",
+                      fontWeight: "medium",
+                      marginBottom: 2,
                       fontFamily: "Poppins, sans-serif;",
+                      textAlign: "center",
                     }}
                   >
-                    RIGHT PROCESS
+                    {item.description}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer nec odio. Praesent libero. Sed cursus ante dapibus
-                    diam.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            {/*------------------ Card 3 --------------------*/}
-            <Grid item xs={4}>
-              <Card sx={{ height: "100%" }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="/rightTech.jpg"
-                  alt="picture"
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={{
-                      fontWeight: "bold",
-                      color: "#82C8E1 ",
-                      fontFamily: "Poppins, sans-serif;",
-                    }}
-                  >
-                    RIGHT TECHNOLOGY
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer nec odio. Praesent libero. Sed cursus ante dapibus
-                    diam.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
