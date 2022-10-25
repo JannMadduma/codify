@@ -17,21 +17,23 @@ const Home = ({}) => {
     <div id="home" style={{ height: "100%" }}>
       <Header />
       <Hero />
+      <Portfolio />
+      <PricingService />
       <Framework />
       <Technology />
 
       {/* ton  */}
-      <Portfolio />
+
       <Feedbacks />
-      <ContactUs />
       <Framework />
 
       {/* russ */}
-      <PricingService />
+
       <AboutUs />
       <Goals />
       <Missionvision />
 
+      <ContactUs />
       <Footer />
     </div>
   );
