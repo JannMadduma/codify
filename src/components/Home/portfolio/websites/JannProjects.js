@@ -11,10 +11,9 @@ export default function JannProjects() {
   return (
     <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 " }}>
       <CardMedia
-        component="img"
-        alt="PICTURE"
+        component="video"
         height="140"
-        image="/estate.jpg"
+        video="vid/estatewindows.mp4"
         sx={{ p: 2 }}
       />
       <CardContent>
@@ -28,7 +27,7 @@ export default function JannProjects() {
             fontFamily: "Poppins, sans-serif;",
           }}
         >
-          Jann Frauline
+          ESTATE WINDOWS
         </Typography>
         <Typography variant="body2" color="text.secondary" align="left">
           Web Application

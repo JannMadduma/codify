@@ -91,6 +91,14 @@ export default function SignInButton() {
     }
   };
 
+  // React.useEffect(() => {
+  //   if (loggedIn?.role === "admin") {
+  //     setPages([...pagesAll, ...pagesAdmin]);
+  //   } else {
+  //     setPages(pagesAll);
+  //   }
+  // }, [loggedIn]);
+
   return (
     <div>
       <Box>
