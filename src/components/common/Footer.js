@@ -7,6 +7,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 
 import {
   Box,
+  Button,
   Grid,
   IconButton,
   InputBase,
@@ -161,11 +162,15 @@ export default function Footer() {
                   <InputBase sx={{ ml: 1 }} placeholder="Your email here" />
                 </Box>
               </Grid>
-              {/* <Grid item md={4}>
-                <Button size="small" variant="contained">
+              <Grid item md={4}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{ bgcolor: "#82C8E1 " }}
+                >
                   Subscribe
                 </Button>
-              </Grid> */}
+              </Grid>
             </Grid>
           </Paper>
         </div>
