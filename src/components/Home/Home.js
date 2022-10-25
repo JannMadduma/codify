@@ -5,12 +5,11 @@ import Framework from "./heropage/Framework";
 import Technology from "./heropage/Technology";
 import Portfolio from "../common/Portfolio";
 import Footer from "../common/Footer";
-import Feedbacks from "../common/Feedbacks";
 import PricingService from "./pricingservices/PricingService";
 import AboutUs from "./about/AboutUs";
-import Goals from "./about/goalsObj";
 import Missionvision from "./about/missionvision";
-import ContactUs from "./heropage/ContactUs";
+import Pricing from "./heropage/Pricing";
+import FAQ from "./heropage/FAQ";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 let themeInit = createTheme({});
@@ -37,16 +36,13 @@ const Home = ({}) => {
         <Hero />
         <Portfolio />
         <PricingService />
-        {/* pricing */}
+        <Pricing />
         <Technology />
-        {/* FAQ */}
+        <FAQ />
         <AboutUs />
         <Framework />
         <Missionvision />
-        <Goals />
-        <Feedbacks />
-        {/* core team */}
-        <ContactUs />
+
         <Footer />
       </div>
     </ThemeProvider>
