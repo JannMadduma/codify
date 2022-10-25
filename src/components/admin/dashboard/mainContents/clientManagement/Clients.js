@@ -7,9 +7,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import SearchIcon from "@mui/icons-material/Search";
 import DoneIcon from "@mui/icons-material/Done";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
@@ -54,14 +52,12 @@ const mdTheme = createTheme();
 
 export default function Clients({ isPending }) {
   const dispatch = useDispatch();
-  
+
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
-
-
 
   const handleInputChange = (e) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
@@ -227,9 +223,7 @@ export default function Clients({ isPending }) {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell>
-                          
-                        </TableCell>
+                        <TableCell></TableCell>
                         <TableCell align="center">
                           <Button onClick={() => handleClickOpen({})}>
                             ADD CLIENTS
