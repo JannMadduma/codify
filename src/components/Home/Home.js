@@ -11,26 +11,45 @@ import AboutUs from "./about/AboutUs";
 import Goals from "./about/goalsObj";
 import Missionvision from "./about/missionvision";
 import ContactUs from "./heropage/ContactUs";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+let themeInit = createTheme({});
+const theme = createTheme(themeInit, {
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "100px",
+          [themeInit.breakpoints.up("lg")]: {
+            maxWidth: "1070px",
+          },
+        },
+      },
+    },
+  },
+});
 
 const Home = ({}) => {
   return (
-    <div id="home" style={{ height: "100%" }}>
-      <Header />
-      <Hero />
-      <Portfolio />
-      <PricingService />
-      {/* pricing */}
-      <Technology />
-      {/* FAQ */}
-      <AboutUs />
-      <Framework />
-      <Missionvision />
-      <Goals />
-      <Feedbacks />
-      {/* core team */}
-      <ContactUs />
-      <Footer />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div id="home" style={{ height: "100%" }}>
+        <Header />
+        <Hero />
+        <Portfolio />
+        <PricingService />
+        {/* pricing */}
+        <Technology />
+        {/* FAQ */}
+        <AboutUs />
+        <Framework />
+        <Missionvision />
+        <Goals />
+        <Feedbacks />
+        {/* core team */}
+        <ContactUs />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 };
 
