@@ -7,19 +7,17 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 
 import {
   Box,
-  Button,
   Grid,
   IconButton,
   InputBase,
   Paper,
-  TextField,
   Typography,
 } from "@mui/material";
 
 const useStyles = makeStyles({
   footerStyles: {
     color: "white",
-    background: "#2160A0",
+    background: "#82C8E1 ",
   },
   linkContainer: {
     display: "flex",
@@ -27,6 +25,7 @@ const useStyles = makeStyles({
     flexDirection: "row",
   },
   links: {
+    fontFamily: "Poppins, sans-serif;",
     display: "flex",
     flexDirection: "column",
     padding: "2%",
@@ -34,6 +33,8 @@ const useStyles = makeStyles({
     flex: "25%",
   },
   linksLogo: {
+    fontSize: 38,
+    fontFamily: "Poppins, sans-serif;",
     display: "flex",
     flexDirection: "column",
     padding: "2%",
@@ -42,6 +43,7 @@ const useStyles = makeStyles({
     flex: "25%",
   },
   linksText: {
+    fontFamily: "Poppins, sans-serif;",
     display: "flex",
     flexDirection: "column",
     padding: "2%",
@@ -49,7 +51,8 @@ const useStyles = makeStyles({
     flex: "25%",
   },
   aStyles: {
-    color: "white",
+    fontFamily: "Poppins, sans-serif;",
+    color: "black",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
@@ -59,6 +62,7 @@ const useStyles = makeStyles({
   bottom: {
     textAlign: "center",
     padding: "1%",
+    color: "black",
   },
 });
 
@@ -68,7 +72,7 @@ export default function Footer() {
   return (
     <footer className={classes.footerStyles}>
       <div>
-        <h3 className={classes.linksLogo}>LOGO</h3>
+        <h3 className={classes.linksLogo}>codifyph</h3>
       </div>
       <div className={classes.linkContainer}>
         <div className={classes.links}>
@@ -89,24 +93,28 @@ export default function Footer() {
               <IconButton
                 aria-label="Linkedin.com"
                 onClick={() => window.open("https://www.Linkedin.com")}
+                sx={{ color: "white" }}
               >
                 <LinkedInIcon />
               </IconButton>
               <IconButton
                 aria-label="Facebook.com"
                 onClick={() => window.open("https://www.Facebook.com")}
+                sx={{ color: "white" }}
               >
                 <FacebookIcon />
               </IconButton>
               <IconButton
                 aria-label="GitHub.com"
                 onClick={() => window.open("https://www.GitHub.com")}
+                sx={{ color: "white" }}
               >
                 <GitHubIcon />
               </IconButton>
               <IconButton
                 aria-label="Twitter.com"
                 onClick={() => window.open("https://www.Twitter.com")}
+                sx={{ color: "white" }}
               >
                 <TwitterIcon />
               </IconButton>
@@ -125,7 +133,7 @@ export default function Footer() {
           </a>
         </div>
         <div className={classes.linksText}>
-          <Typography>
+          <Typography sx={{ color: "black" }}>
             For inquiries,{" "}
             <span>
               <a href="#" className={classes.aStyles}>
@@ -133,6 +141,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     fontWeight: "bold",
+                    color: "white",
                   }}
                 >
                   send us an email
@@ -143,7 +152,7 @@ export default function Footer() {
           </Typography>
         </div>
         <div className={classes.links}>
-          <Typography>Get our latest update</Typography>
+          <Typography sx={{ color: "black" }}>Get our latest update</Typography>
 
           <Paper>
             <Grid container>
@@ -161,7 +170,9 @@ export default function Footer() {
           </Paper>
         </div>
       </div>
-      <h5 className={classes.bottom}>© CODIFYPH | COPYRIGHT 2022</h5>
+      <h5 className={classes.bottom}>
+        © C O D I F Y P H | C O Y R I G H T 2 0 2 2
+      </h5>
     </footer>
   );
 }
