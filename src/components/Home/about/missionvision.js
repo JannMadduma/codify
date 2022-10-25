@@ -23,7 +23,7 @@ export default function Missionvision() {
             spacing={2}
             sx={{ height: "100%", alignContent: "center" }}
           >
-            <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
+            <Grid item xs={12} sx={{ display: "flex", alignItems: "center", gap: 5 }}>
               <Box>
                 <img
                   style={{ height: 300, width: 500 }}
@@ -59,7 +59,7 @@ export default function Missionvision() {
               </Box>
             </Grid>
 
-            <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
+            <Grid item xs={12} sx={{ display: "flex", alignItems: "center", gap: 5, marginY: 5 }}>
               <Box>
                 <Typography
                   variant="h2"
@@ -68,7 +68,6 @@ export default function Missionvision() {
                     color: "rgba(50, 180, 235, 0.8)",
                     fontFamily: "Poppins, sans-serif;",
                     textAlign: "center",
-                    marginBottom: 5,
                   }}
                 >
                   Our Mission
