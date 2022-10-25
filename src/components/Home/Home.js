@@ -12,6 +12,7 @@ import Goals from "./about/goalsObj";
 import Missionvision from "./about/missionvision";
 import ContactUs from "./heropage/ContactUs";
 import Pricing from "./heropage/Pricing";
+import FAQ from "./heropage/FAQ";
 
 const Home = ({}) => {
   return (
@@ -22,7 +23,7 @@ const Home = ({}) => {
       <PricingService />
       <Pricing/>
       <Technology />
-      {/* FAQ */}
+      <FAQ/>
       <AboutUs />
       <Framework />
       <Missionvision />
