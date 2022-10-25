@@ -23,7 +23,7 @@ export default function AdminHeader(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav">
+      <AppBar component="nav" sx={{ backgroundColor: "#65C7EE" }}>
         <Toolbar>
           <Typography
             variant="h6"
