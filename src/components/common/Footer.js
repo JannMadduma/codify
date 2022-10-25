@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
       </div>
       <h5 className={classes.bottom}>
-        © C O D I F Y P H | C O Y R I G H T 2 0 2 2
+        © C O D I F Y P H | C O P Y R I G H T 2 0 2 2
       </h5>
     </footer>
   );
