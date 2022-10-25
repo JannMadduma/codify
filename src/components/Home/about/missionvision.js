@@ -1,16 +1,40 @@
-import { Box, Container } from "@mui/system";
+import { Box, Container, sizeWidth } from "@mui/system";
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Grid, } from "@mui/material";
+import { Repeat } from "@mui/icons-material";
 
 export default function Missionvision() {
+
+  const styles = {
+    paperContainer: {
+        height: 300,
+        backgroundImage: `linear-gradient(to top, rgba(130, 200, 225, 0.8), rgba(255, 255, 255, 0)),url(${"../images/10.png"})`,
+        width: 500,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+    }
+};
+  const stylesone = {
+    paperContainer: {
+        height: 300,
+        backgroundImage: `linear-gradient(to top, rgba(130, 200, 225, 0.8), rgba(255, 255, 255, 0)),url(${"../images/5.png"})`,
+        width: 500,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    }
+};
+
+
   return (
+    
     <div
       style={{
         backgroundImage: "url('img/herobackground.png')",
         height: "100%",
       }}
     >
+    
       <Box
         sx={{
           backgroundColor: "white",
@@ -25,10 +49,9 @@ export default function Missionvision() {
           >
             <Grid item xs={12} sx={{ display: "flex", alignItems: "center", gap: 5 }}>
               <Box>
-                <img
-                  style={{ height: 300, width: 500 }}
-                  src="../images/10.png"
-                />
+              <div style={styles.paperContainer}>
+
+              </div>
               </Box>
 
               <Box>
@@ -36,7 +59,7 @@ export default function Missionvision() {
                   variant="h2"
                   sx={{
                     fontWeight: "bold",
-                    color: "rgba(50, 180, 235, 0.8)",
+                    color: "rgba(130, 200, 225)",
                     fontFamily: "Poppins, sans-serif;",
                     textAlign: "center",
                     marginBottom: 5,
@@ -65,7 +88,7 @@ export default function Missionvision() {
                   variant="h2"
                   sx={{
                     fontWeight: "bold",
-                    color: "rgba(50, 180, 235, 0.8)",
+                    color: "rgba(130, 200, 225)",
                     fontFamily: "Poppins, sans-serif;",
                     textAlign: "center",
                   }}
@@ -89,10 +112,8 @@ export default function Missionvision() {
               </Box>
 
               <Box>
-                <img
-                  style={{ height: 300, width: 500 }}
-                  src="../images/5.png"
-                ></img>
+              <div style={stylesone.paperContainer}>
+              </div>
               </Box>
             </Grid>
           </Grid>

@@ -30,7 +30,7 @@ export default function AboutUs() {
                   variant="h2"
                   sx={{
                     fontWeight: "bold",
-                    color: "rgba(50, 180, 235, 0.8)",
+                    color: "rgba(130, 200, 225)",
                     fontFamily: "Poppins, sans-serif;",
                   }}
                 >
