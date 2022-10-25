@@ -21,7 +21,7 @@ const Home = ({}) => {
       <Hero />
       <Portfolio />
       <PricingService />
-      {/* pricing */}
+      <Pricing />
       <Technology />
       {/* FAQ */}
       <AboutUs />
@@ -29,7 +29,7 @@ const Home = ({}) => {
       <Missionvision />
       <Goals />
       <Feedbacks />
-      {/* core team */}
+      <Team />
       <ContactUs />
       <Footer />
     </div>
