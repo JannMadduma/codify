@@ -457,7 +457,6 @@ export default function Projects({ isPending }) {
         <DialogContent>
           <Typography>
             Are you sure you want to approve the project{" "}
-            {JSON.stringify(projectDetails)}
             <strong>{projectDetails?.Projectname}</strong>?
           </Typography>
         </DialogContent>
