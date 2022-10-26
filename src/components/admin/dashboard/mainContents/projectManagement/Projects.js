@@ -60,6 +60,7 @@ export default function Projects({ isPending }) {
   const clients = useSelector((state) => state.clients);
   const [projectDetails, setProjectDetails] = React.useState({});
   const [openConfirm, setOpenConfirm] = React.useState(false);
+  const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
@@ -166,7 +167,7 @@ export default function Projects({ isPending }) {
 
   const handleOpenConfirmDelete = (i) => {
     setProjectDetails(i);
-    setOpenConfirm(true);
+    setOpenConfirmDelete(true);
   };
 
   const handleCloseConfirmApprove = () => {
@@ -174,7 +175,7 @@ export default function Projects({ isPending }) {
   };
 
   const handleCloseConfirmDelete = () => {
-    setOpenConfirm(false);
+    setOpenConfirmDelete(false);
   };
 
   const handleOpenConfirmApproveProject = (i) => {
@@ -423,7 +424,7 @@ export default function Projects({ isPending }) {
       </Dialog>
       {/* dialog for confirm delete*/}
       <Dialog
-        open={openConfirm}
+        open={openConfirmDelete}
         onClose={handleCloseConfirmDelete}
         aria-labelledby="draggable-dialog-title"
       >
