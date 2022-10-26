@@ -140,17 +140,18 @@ export default function Hero({ isPending }) {
               >
                 <Box>
                   <Typography
-                    component="h3"
-                    variant="h3"
+                    component="h34"
+                    variant="h4"
                     align="left"
                     color="text.primary"
                     sx={{
                       color: "#353C42",
 
-                      fontWeight: 500,
+                      fontWeight: 'bold',
+                      fontFamily: "Poppins, sans-serif;",
                     }}
                   >
-                    website
+                    WEBSITE
                   </Typography>
                   <Typography
                     component="h2"
