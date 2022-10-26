@@ -10,36 +10,36 @@ import { Box } from "@mui/system";
 export default function JannProjects() {
   return (
     <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 " }}>
-      <CardMedia
-        component="video"
-        height="140"
-        video="vid/estatewindows.mp4"
-        sx={{ p: 2 }}
-      />
+      <CardMedia height="140" sx={{ p: 1 }} />
+      <video autoPlay muted style={{ width: "100%" }}>
+        <source src="vid/estatewindows.mp4" type="video/mp4" />
+      </video>
       <CardContent>
         <Typography
-          gutterBottom
-          variant="h5"
           component="div"
           align="left"
           sx={{
             fontWeight: "bold",
             fontFamily: "Poppins, sans-serif;",
+            fontSize: "12px",
+            padding: "0px",
           }}
         >
           ESTATE WINDOWS
         </Typography>
-        <Typography variant="body2" color="text.secondary" align="left">
+        <Typography
+          color="text.secondary"
+          align="left"
+          sx={{
+            fontFamily: "Poppins, sans-serif;",
+            fontSize: "10px",
+            padding: "0px",
+          }}
+        >
           Web Application
-        </Typography>
-        <Typography variant="body2" color="text.secondary" align="left">
+          <br />
           Codify
-        </Typography>
-        <Typography variant="body2" color="text.secondary" align="left">
-          1 UL Design 2 Full Stack Web Developers
-        </Typography>
-        <Typography variant="body2" color="text.secondary" align="left">
-          2 Days
+          <br />1 UL Design 2 Full Stack Web Developers
         </Typography>
       </CardContent>
       {/* <CardActions>

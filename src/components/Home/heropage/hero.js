@@ -115,13 +115,13 @@ export default function Hero({ isPending }) {
   return (
     <div
       style={{
-        backgroundImage: "url('img/herobackground.png')",
+        backgroundImage: "url('img/heroimg.png')",
+        backgroundSize: "cover",
         height: "100%",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "#ffffffc2",
           height: "100%",
         }}
       >
