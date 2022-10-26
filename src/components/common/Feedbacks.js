@@ -15,16 +15,16 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    imgPath: "test.jpg",
+    imgPath: "img/testimonial.jpg",
   },
   {
-    imgPath: "test.jpg",
+    imgPath: "img/testimonial.jpg",
   },
   {
-    imgPath: "test.jpg",
+    imgPath: "img/testimonial.jpg",
   },
   {
-    imgPath: "test.jpg",
+    imgPath: "img/testimonial.jpg",
   },
 ];
 
@@ -48,13 +48,13 @@ function Feedbacks() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/herobackground.png')",
+        backgroundImage: "url('img/ABOUT US - THE TEAM.png')",
+        backgroundSize: "cover",
         height: "100%",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "#ffffffc2",
           height: "100%",
         }}
       >

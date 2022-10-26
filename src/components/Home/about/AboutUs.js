@@ -7,13 +7,13 @@ export default function AboutUs() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/herobackground.png')",
+        backgroundImage: "url('img/ABOUT US - GOAL.png')",
+        backgroundSize: "cover",
         height: "100%",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "white",
           height: "100%",
         }}
         id="aboutUs"

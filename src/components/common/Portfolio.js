@@ -80,6 +80,9 @@ export default function Portfolio() {
       <Box
         sx={{
           height: "100%",
+
+          alignContent: "center",
+          justifyContent: "center",
         }}
         id="portfolio"
       >
@@ -100,6 +103,9 @@ export default function Portfolio() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+
+                alignContent: "center",
+                justifyContent: "center",
               }}
             >
               <Box align="center">

@@ -115,13 +115,13 @@ export default function ContactUs({ isPending }) {
   return (
     <div
       style={{
-        backgroundImage: "url('img/herobackground.png')",
-        height: "100%",
+        height: "80%",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "white",
+          backgroundImage: "url('img/FOOTER.png')",
+          backgroundSize: "cover",
           height: "100%",
         }}
         id="contactUs"

@@ -44,14 +44,14 @@ export default function PricingService() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/servicesBackground.png')",
+        backgroundImage: "url('/img/HOME - OUR SERVICES.png')",
+        backgroundSize: "cover",
         height: "100%",
       }}
     >
       <CssBaseline />
       <Box
         sx={{
-          backgroundColor: "#72bfdbc2",
           height: "100%",
           pt: 8,
           pb: 6,

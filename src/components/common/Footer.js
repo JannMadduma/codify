@@ -73,7 +73,9 @@ export default function Footer() {
   return (
     <footer className={classes.footerStyles}>
       <div>
-        <h3 className={classes.linksLogo}>codifyph</h3>
+        <Typography style={{ fontSize: "50px" }} className={classes.linksLogo}>
+          codifyph
+        </Typography>
       </div>
       <div className={classes.linkContainer}>
         <div className={classes.links}>

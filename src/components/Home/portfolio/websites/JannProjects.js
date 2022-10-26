@@ -48,10 +48,6 @@ export default function JannProjects() {
           <br />1 UL Design 2 Full Stack Web Developers
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
     </Card>
   );
 }
