@@ -24,13 +24,13 @@ export const SidebarContents = (
       <Div>{"ADMIN"}</Div>
     </Typography>
 
-    <ListItemButton>
-      {/* component={Link} to={"/subscribed"} */}
+    {/* <ListItemButton>
+      component={Link} to={"/subscribed"}
       <ListItemIcon>
         <MailOutlineIcon />
       </ListItemIcon>
       <ListItemText primary="Subscribed" />
-    </ListItemButton>
+    </ListItemButton> */}
 
     <ListItemButton component={Link} to={"/freelancers"}>
       <ListItemIcon>

@@ -32,34 +32,6 @@ const theme = createTheme(themeInit, {
 });
 
 const Home = ({}) => {
-
-//   const stylesdot = {
-//     paperContainer: {
-//         height: 70,
-//         backgroundImage: `url(${"../images/dots.png"})`,
-//         width: 200,
-//         backgroundSize: 'cover',
-//         backgroundPosition: 'center',
-//         position: 'absolute',
-//         marginTop: 5290,
-//         marginLeft: 10,
-//         transform: 'rotate(90deg)'
-//     }
-// };
-//   const stylesdottwo = {
-//     paperContainer: {
-//         height: 70,
-//         backgroundImage: `url(${"../images/dots.png"})`,
-//         width: 200,
-//         backgroundSize: 'cover',
-//         backgroundPosition: 'center',
-//         position: 'absolute',
-//         marginTop: 5750,
-//         marginLeft: 1270,
-//         transform: 'rotate(90deg)'
-//     }
-// };
-
   return (
     <ThemeProvider theme={theme}>
       <div id="home" style={{ height: "100%" }}>
@@ -79,13 +51,6 @@ const Home = ({}) => {
         <ContactUs />
         <Footer />
       </div>
-
-      {/* <div style={stylesdot.paperContainer}>
-
-              </div>
-      <div style={stylesdottwo.paperContainer}>
-
-              </div> */}
     </ThemeProvider>
   );
 };

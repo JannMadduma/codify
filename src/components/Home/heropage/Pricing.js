@@ -86,6 +86,7 @@ export default function Pricing() {
       style={{
         height: "100%",
       }}
+      id="pricing"
     >
       <CssBaseline />
       <Box
@@ -94,7 +95,6 @@ export default function Pricing() {
           pt: 8,
           pb: 6,
         }}
-        id="pricing"
       >
         <Container maxWidth="md">
           <Box>
