@@ -162,11 +162,12 @@ export default function Projects({ isPending }) {
     editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
       dispatch(approveProjecAction({ idNo: projectDetails.idNo }));
     });
-    handleCloseConfirmDelete();
+    handleCloseConfirmApprove();
   };
 
   const handleOpenConfirmDelete = (i) => {
     setProjectDetails(i);
+    console.log("here", i);
     setOpenConfirmDelete(true);
   };
 
@@ -456,6 +457,7 @@ export default function Projects({ isPending }) {
         <DialogContent>
           <Typography>
             Are you sure you want to approve the project{" "}
+            {JSON.stringify(projectDetails)}
             <strong>{projectDetails?.Projectname}</strong>?
           </Typography>
         </DialogContent>
