@@ -9,9 +9,9 @@ import { Box } from "@mui/system";
 
 export default function JannProjects() {
   return (
-    <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 " }}>
+    <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 ", padding: "0 15px" }}>
       <CardMedia height="140" sx={{ p: 1 }} />
-      <video autoPlay muted style={{ width: "100%" }}>
+      <video autoPlay muted style={{ width: "100%", borderRadius: "5px" }}>
         <source src="vid/cebueatz.mp4" type="video/mp4" />
       </video>
       <CardContent>

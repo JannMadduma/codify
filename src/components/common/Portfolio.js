@@ -20,27 +20,46 @@ const Item = styled(Box)(({ theme }) => ({
 function FormRow() {
   return (
     <React.Fragment>
-      <Grid item xs={3}>
+      <Grid
+        item
+        xs={3}
+        sx={{
+          padding: "0 10px",
+        }}
+      >
         <Item>
           <JannProjects />
         </Item>
       </Grid>
-      <Grid item xs={3}>
+      <Grid
+        item
+        xs={3}
+        sx={{
+          padding: "0 10px",
+        }}
+      >
         <Item>
           <PhillipProjects />
         </Item>
       </Grid>
-      {/* <Grid item xs={3}>
-        <Item>
-          <RechProjects />
-        </Item>
-      </Grid> */}
-      <Grid item xs={3}>
+      <Grid
+        item
+        xs={3}
+        sx={{
+          padding: "0 10px",
+        }}
+      >
         <Item>
           <RusselProjects />
         </Item>
       </Grid>
-      <Grid item xs={3}>
+      <Grid
+        item
+        xs={3}
+        sx={{
+          padding: "0 10px",
+        }}
+      >
         <Item>
           <TonProjects />
         </Item>
@@ -51,46 +70,82 @@ function FormRow() {
 
 export default function Portfolio() {
   return (
-    <Container>
-      <Box style={{ padding: "5%" }} id="portfolio">
-        <Box
-          sx={{ width: "100%", maxWidth: "100%", padding: "1%" }}
-          align="center"
-        >
-          <Typography
-            variant="h4"
+    <div
+      style={{
+        backgroundImage: "url('img/ABOUT US - MISION & VISION.png')",
+        backgroundSize: "cover",
+        height: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          height: "100%",
+        }}
+        id="portfolio"
+      >
+        <Container sx={{ height: "100%" }}>
+          <Grid
+            container
+            spacing={2}
             sx={{
-              fontWeight: "bold",
-              fontFamily: "Poppins, sans-serif;",
+              height: "100%",
+              alignContent: "center",
+              justifyContent: "center",
             }}
           >
-            OUR WORK
-          </Typography>
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: "bold",
-              color: "#82C8E1 ",
-              fontFamily: "Poppins, sans-serif;",
-            }}
-          >
-            Our Portfolio
-          </Typography>
-          <Typography sx={{ mx: "auto", width: 900 }}>
-            This is a description of the portfolio. This is a description of the
-            portfolio. This is a description of the portfolio. This is a
-            description of the portfolio. This is a description of the
-            portfolio.
-          </Typography>
-        </Box>
-        <Box>
-          <Grid container spacing={5}>
-            <Grid container item spacing={5}>
-              <FormRow />
+            <Grid
+              item
+              xs={12}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Box align="center">
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: "bold",
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  OUR WORK
+                </Typography>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#82C8E1 ",
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  Our Portfolio
+                </Typography>
+                <Typography sx={{ mx: "auto", width: 900 }}>
+                  This is a description of the portfolio. This is a description
+                  of the portfolio. This is a description of the portfolio. This
+                  is a description of the portfolio. This is a description of
+                  the portfolio.
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box
+                sx={{
+                  alignItems: "center",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <FormRow />
+              </Box>
             </Grid>
           </Grid>
-        </Box>
+        </Container>
       </Box>
-    </Container>
+    </div>
   );
 }

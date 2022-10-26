@@ -5,6 +5,10 @@ body > div,
   height: 100%;
 }
 
+ul {
+  list-style-type: circle;
+}
+
 * {
   font-family: "Poppins", sans-serif;
 }

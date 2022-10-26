@@ -69,8 +69,17 @@ export default function Technology() {
         <Grid container spacing={4} pt={4}>
           {/* -----------------CARD 1 ---------------- */}
           {logos.map((item) => (
-            <Grid item xs={2} key={item}>
-              <img src={item} style={{ width: "100%" }} />
+            <Grid
+              item
+              xs={2}
+              key={item}
+              style={{
+                paddingTop: "50px",
+              }}
+            >
+              <Container>
+                <img src={item} style={{ width: "100%", padding: "0 10px" }} />
+              </Container>
             </Grid>
           ))}
         </Grid>

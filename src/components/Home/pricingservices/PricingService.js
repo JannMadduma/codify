@@ -94,14 +94,24 @@ export default function PricingService() {
           <Grid container spacing={4} pt={4}>
             {/* -----------------CARD 1 ---------------- */}
             {framework.map((item) => (
-              <Grid item xs={3} key={item}>
-                <img
-                  src={item.img}
-                  style={{
-                    width: "100%",
-                    padding: "0 60px",
-                  }}
-                />
+              <Grid
+                item
+                xs={3}
+                key={item}
+                style={{
+                  paddingTop: "50px",
+                }}
+              >
+                <Container>
+                  <img
+                    src={item.img}
+                    style={{
+                      width: "100%",
+                      padding: "0 70px",
+                    }}
+                  />
+                </Container>
+
                 <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
                   <Typography
                     variant="h6"
