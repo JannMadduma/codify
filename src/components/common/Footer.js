@@ -161,18 +161,13 @@ export default function Footer() {
             <Grid container>
               <Grid item md={8}>
                 <Box>
-                  <InputBase sx={{ ml: 1 }} placeholder="Your email here" />
+                  <InputBase
+                    sx={{ ml: 1 }}
+                    placeholder="Your email here and Enter"
+                  />
                 </Box>
               </Grid>
-              <Grid item md={4}>
-                <Button
-                  size="small"
-                  variant="contained"
-                  sx={{ bgcolor: "#82C8E1 " }}
-                >
-                  Subscribe
-                </Button>
-              </Grid>
+              <Grid item md={4}></Grid>
             </Grid>
           </Paper>
         </div>

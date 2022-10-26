@@ -147,7 +147,7 @@ export default function Hero({ isPending }) {
                     sx={{
                       color: "#353C42",
 
-                      fontWeight: 'bold',
+                      fontWeight: "bold",
                       fontFamily: "Poppins, sans-serif;",
                     }}
                   >
@@ -194,7 +194,7 @@ export default function Hero({ isPending }) {
                       }}
                       onClick={() => handleClickOpen({})}
                     >
-                      Subscribe {">"}
+                      Inquire {">"}
                     </Button>
                     <Button
                       className="Button"

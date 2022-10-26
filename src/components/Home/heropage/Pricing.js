@@ -16,12 +16,12 @@ const tiers = [
       <Box
         style={{
           fontWeight: "bold",
-          fontSize: "50px",
+          fontSize: "30px",
           width: "100%",
           fontStyle: "Poppins",
         }}
       >
-        $100
+        $20,000
       </Box>,
     ],
 
@@ -34,12 +34,12 @@ const tiers = [
       <Box
         style={{
           fontWeight: "bold",
-          fontSize: "50px",
+          fontSize: "30px",
           width: "100%",
           fontStyle: "Poppins",
         }}
       >
-        $100
+        $1,000
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
@@ -51,12 +51,12 @@ const tiers = [
       <Box
         style={{
           fontWeight: "bold",
-          fontSize: "50px",
+          fontSize: "30px",
           width: "100%",
           fontStyle: "Poppins",
         }}
       >
-        $100
+        $10,000
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
@@ -68,12 +68,12 @@ const tiers = [
       <Box
         style={{
           fontWeight: "bold",
-          fontSize: "50px",
+          fontSize: "30px",
           width: "100%",
           fontStyle: "Poppins",
         }}
       >
-        $100
+        $50,000
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
