@@ -123,8 +123,7 @@ export default function Pricing() {
               Packages & Pricing
             </Typography>
             <Typography variant="h5" align="center" paragraph>
-              lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-              ipsum lorem ipsum v
+              We make sure that clients are not intimidated by price.
             </Typography>
           </Box>
 

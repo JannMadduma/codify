@@ -24,7 +24,8 @@ export default function Technology() {
   return (
     <Box
       sx={{
-        backgroundColor: "white",
+        backgroundImage: "url('img/ABOUT US - Framework.png')",
+        backgroundSize: "cover",
         pt: 8,
         pb: 6,
       }}
@@ -57,13 +58,13 @@ export default function Technology() {
           Our Technologies
         </Typography>
         <Typography
-          variant="h5"
+          variant="h6"
           align="center"
           color="text.secondary"
           paragraph
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-          odio. Praesent libero. Sed cursus ante dapibus diam.
+          We possess numerous techstack skills to achieve the necessary
+          requirements.
         </Typography>
 
         <Grid container spacing={4} pt={4}>

@@ -49,8 +49,7 @@ export default function Framework() {
               color="text.secondary"
               paragraph
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              nec odio. Praesent libero. Sed cursus ante dapibus diam.
+              We follow Policies and Project Management to attain best results.
             </Typography>
             <Stack
               sx={{ pt: 4 }}

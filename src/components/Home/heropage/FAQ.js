@@ -103,7 +103,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
               }}
             >
-              Why is Earth flat?
+              How can I contact the team?
             </Typography>
             <Typography
               sx={{

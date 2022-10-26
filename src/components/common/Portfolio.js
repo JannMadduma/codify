@@ -128,11 +128,13 @@ export default function Portfolio() {
                 >
                   Our Portfolio
                 </Typography>
-                <Typography sx={{ mx: "auto", width: 900 }}>
-                  This is a description of the portfolio. This is a description
-                  of the portfolio. This is a description of the portfolio. This
-                  is a description of the portfolio. This is a description of
-                  the portfolio.
+                <Typography
+                  sx={{ mx: "auto", width: 900, paddingBottom: "50px" }}
+                >
+                  Codify have full-stack developers with the love of a UI/UX
+                  designer. Listed skills include all things JavaScript, such as
+                  React, Next.js, Vue.js, Nuxt.js, and Ember.js, as well as
+                  UI/UX design through Figma and Adobe XD.
                 </Typography>
               </Box>
             </Grid>
