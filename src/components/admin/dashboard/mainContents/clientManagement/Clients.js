@@ -150,7 +150,7 @@ export default function Clients({ isPending }) {
     editClients(clientDetails.idNo, editedClientDetails).then((res) => {
       dispatch(approveClientAction({ idNo: clientDetails.idNo }));
     });
-    handleCloseConfirmDelete();
+    handleCloseConfirmApprove();
   };
 
   const handleOpenConfirmDelete = (i) => {
@@ -446,7 +446,7 @@ export default function Clients({ isPending }) {
       </Dialog>
       <Dialog
         open={openConfirm}
-        onClose={handleCloseConfirmDelete}
+        onClose={handleCloseConfirmApprove}
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
