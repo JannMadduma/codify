@@ -92,7 +92,7 @@ export default function FAQ() {
                fontFamily: "Poppins, sans-serif;",
               }}>
                
-               Why is Earth flat?
+               How can I contact the team?
                </Typography>
                <Typography
            sx={{
@@ -103,7 +103,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
                }}>
                
-               Because of gravity and the meteors that hit the planet that made it flat just like Asgard.
+               Contact Us button is located on the top right corner of the website.
                </Typography>
         </Box>
         <Box className="custom-faq" maxWidth={false} 
@@ -125,7 +125,7 @@ export default function FAQ() {
                fontFamily: "Poppins, sans-serif;",
               }}>
                
-               Why is Earth flat?
+               Is website project expensive?
                </Typography>
                <Typography
            sx={{
@@ -136,7 +136,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
                }}>
                
-               Because of gravity and the meteors that hit the planet that made it flat just like Asgard.
+               It will depend on the complexity and amount of functionalities plus design of the project.
                </Typography>
         </Box>
         <Box className="custom-faq" maxWidth={false} 
@@ -158,7 +158,7 @@ export default function FAQ() {
                fontFamily: "Poppins, sans-serif;",
               }}>
                
-               Why is Earth flat?
+               Is this a scam?
                </Typography>
                <Typography
            sx={{
@@ -169,7 +169,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
                }}>
                
-               Because of gravity and the meteors that hit the planet that made it flat just like Asgard.
+               Definitely not.
                </Typography>
         </Box>
         <Box className="custom-faq" maxWidth={false} 
@@ -191,7 +191,7 @@ export default function FAQ() {
                fontFamily: "Poppins, sans-serif;",
               }}>
                
-               Why is Earth flat?
+               How lone have this startup been up and running?
                </Typography>
                <Typography
            sx={{
@@ -202,7 +202,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
                }}>
                
-               Because of gravity and the meteors that hit the planet that made it flat just like Asgard.
+               About 6 months.
                </Typography>
         </Box>
         <Box className="custom-faq" maxWidth={false} 
@@ -224,7 +224,7 @@ export default function FAQ() {
                fontFamily: "Poppins, sans-serif;",
               }}>
                
-               Why is Earth flat?
+               Is Earth flat?
                </Typography>
                <Typography
            sx={{
@@ -235,7 +235,7 @@ export default function FAQ() {
                 fontFamily: "Poppins, sans-serif;",
                }}>
                
-               Because of gravity and the meteors that hit the planet that made it flat just like Asgard.
+               Yes.
                </Typography>
         </Box>
         

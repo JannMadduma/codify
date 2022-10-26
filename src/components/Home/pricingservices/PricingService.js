@@ -82,13 +82,12 @@ export default function PricingService() {
             Our Craft
           </Typography>
           <Typography
-            variant="h5"
+            variant="h6"
             align="center"
             color="text.secondary"
             paragraph
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-            odio. Praesent libero. Sed cursus ante dapibus diam.
+            We offer various services which are listed below.
           </Typography>
 
           <Grid container spacing={4} pt={4}>

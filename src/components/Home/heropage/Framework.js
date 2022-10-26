@@ -69,8 +69,7 @@ export default function Framework() {
           color="text.secondary"
           paragraph
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-          odio. Praesent libero. Sed cursus ante dapibus diam.
+          Our product making went through proper procedures and management to attain best possible results.
         </Typography>
 
         <Grid container spacing={4} pt={4}>

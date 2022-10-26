@@ -176,8 +176,8 @@ export default function Hero({ isPending }) {
                     color="text.secondary"
                     paragraph
                   >
-                    Allow us in advancing your business and feel a significant
-                    change in your business.
+                    Allow us in advancing your business and feel the significant
+                    change in it.
                   </Typography>
                   <Stack
                     sx={{ pt: 4 }}
