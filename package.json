@@ -1,7 +1,10 @@
 {
   "name": "capstone-3",
-  "version": "0.1.0",
+  "version": "16.16.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -20,7 +23,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "2.0.0",
     "react-swipeable-views": "latest",
     "react-swipeable-views-utils": "latest",
     "redux": "^4.2.0",
